@@ -14,6 +14,7 @@ function Slide() {
     const cardStyle = {
         border: "solid rgba(240, 240, 240, .20)",
     }
+
     return (
         <div style={slideStyle}>
             <table style={cardStyle}>
