@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from "./component/Header";
+import Navbar from "./component/Navbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const appStyle = {
     width: "100vw",
@@ -17,6 +19,7 @@ function App() {
     return (
         <div style={appStyle} className="App">
             <Header/>
+            <Navbar/>
         </div>
     );
 }

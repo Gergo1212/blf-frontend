@@ -12,13 +12,13 @@ const HeaderStyle = {
     position: "relative",
     display: "flex",
     flexDirection: "row",
-    justifyContent:"space-between"
+    justifyContent: "space-between"
 }
 
 const TitleStyle = {
     position: "absolute",
-    left:"50%",
-    transform:"translateX(-50%)"
+    left: "50%",
+    transform: "translateX(-50%)"
 }
 
 function Header() {
