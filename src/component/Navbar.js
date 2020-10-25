@@ -3,7 +3,6 @@ import Button from "react-bootstrap/cjs/Button";
 import DropdownButton from "react-bootstrap/cjs/DropdownButton";
 import ButtonGroup from "react-bootstrap/cjs/ButtonGroup";
 import Dropdown from "react-bootstrap/cjs/Dropdown";
-import {number} from "prop-types";
 
 
 function Navbar() {
@@ -13,6 +12,7 @@ function Navbar() {
         flexDirection: "row",
         justifyContent: "space-between",
         width: "100%",
+        padding: "1%"
     }
 
     const navbarElements = ["Bemutatkozás", "Program", "Eredmények", "Kapcsolat",

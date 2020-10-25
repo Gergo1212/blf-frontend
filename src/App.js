@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from "./component/Header";
 import Navbar from "./component/Navbar";
+import Slide from "./component/Slide";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -20,6 +21,7 @@ function App() {
         <div style={appStyle} className="App">
             <Header/>
             <Navbar/>
+            <Slide/>
         </div>
     );
 }
