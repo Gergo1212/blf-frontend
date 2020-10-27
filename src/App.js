@@ -4,6 +4,8 @@ import Navbar from "./component/Navbar";
 import Slide from "./component/Slide";
 import Footer from "./component/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Rules from "./page/Rules";
 
 function App() {
 
@@ -21,10 +23,15 @@ function App() {
 
     return (
         <div style={appStyle} className="App">
-            <Header/>
-            <Navbar/>
-            <Slide/>
-            <Footer/>
+            <Router>
+                <Header/>
+                <Navbar/>
+                <Switch>
+                    <Route exact path={"/rules"} component={Rules}/>
+                </Switch>
+                <Slide/>
+                <Footer/>
+            </Router>
         </div>
     );
 }
