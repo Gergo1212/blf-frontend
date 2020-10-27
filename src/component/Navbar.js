@@ -23,14 +23,45 @@ function Navbar() {
         "PMKSZ fordulók", "Kőbányai Kenguru", "OSB fordulók", "III. Süni kupa", "II.Panda kupa",
         "Tao pályázat", "Támogatóink"];
 
-    const indtroduction = ["Klubtörténet", "Célkitűzések", "Vezetők", "Edzők", "Segítők",
+    const introduction = ["Klubtörténet", "Célkitűzések", "Vezetők", "Edzők", "Segítők",
         "Alapszabály"];
 
-    const contact = ["Munkatársak", "Termek"];
+    const contact = [
+        {
+            name: "Munkatársak",
+            link: "/munkatarsak"
+        },
+        {
+            name: "Termek",
+            link: "/termek"
+        }
+    ];
 
-    const program = ["Egyesületi", "Csapatok", "Hanga Ádám terem"];
+    const program = [
+        {
+            name: "Egyesületi",
+            link: "/egyesületi"
+        },
+        {
+            name: "Csapatok",
+            link: "/csapatok"
+        },
+        {
+            name: "Hanga Ádám terem",
+            link: "/hanga"
+        }
+    ];
 
-    const results = ["Egyesületi", "Csapatok"];
+    const results = [
+        {
+            name: "Egyesületi",
+            link: "/egyesületieredmeny"
+        },
+        {
+            name: "Csapatok",
+            link: "/csapateredmeny"
+        }
+    ];
 
     const links = ["MKOSZ", "BKSZ", "PMKSZ", "Kőbányai Kenguru Kupa", "Fiú utánpótlás",
         "Leány utánpótlás", "Sajtó", "NBA", "Oktató oldalak"];
@@ -46,7 +77,7 @@ function Navbar() {
         ))
 
     const listIntroduction =
-        indtroduction.map((element, index) => (
+        introduction.map((element, index) => (
             <Dropdown.Item eventKey={index} as={"button"}>{element}</Dropdown.Item>
         ))
 
@@ -74,7 +105,8 @@ function Navbar() {
     return (
         <div style={navbarStyle}>
             <DropdownButton title={"Általános"} as={"ButtonGroup"} variant={"warning"}>{listGeneral}</DropdownButton>
-            <DropdownButton title={"Bemutatkozás"} as={"ButtonGroup"} variant={"warning"}>{listIntroduction}</DropdownButton>
+            <DropdownButton title={"Bemutatkozás"} as={"ButtonGroup"}
+                            variant={"warning"}>{listIntroduction}</DropdownButton>
             <DropdownButton title={"Kapcsolat"} as={"ButtonGroup"} variant={"warning"}>{listContact}</DropdownButton>
             <DropdownButton title={"Program"} as={"ButtonGroup"} variant={"warning"}>{listPrograms}</DropdownButton>
             <DropdownButton title={"Eredmények"} as={"ButtonGroup"} variant={"warning"}>{listResults}</DropdownButton>
