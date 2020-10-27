@@ -1,11 +1,12 @@
 import React from 'react';
 import Header from "./component/Header";
 import Navbar from "./component/Navbar";
-import Slide from "./component/Slide";
 import Footer from "./component/Footer";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Rules from "./page/Rules";
+import Admin from "./page/Admin";
+import {SeasonProvider} from "./context/SeasonContext";
 
 function App() {
 
@@ -23,15 +24,17 @@ function App() {
 
     return (
         <div style={appStyle} className="App">
-            <Router>
-                <Header/>
-                <Navbar/>
-                <Switch>
-                    <Route exact path={"/rules"} component={Rules}/>
-                </Switch>
-                <Slide/>
-                <Footer/>
-            </Router>
+            <SeasonProvider>
+                <Router>
+                    <Header/>
+                    <Navbar/>
+                    <Switch>
+                        <Route exact path={"/rules"} component={Rules}/>
+                        <Route exact path={"/admin"} component={Admin}/>
+                    </Switch>
+                    <Footer/>
+                </Router>
+            </SeasonProvider>
         </div>
     );
 }
