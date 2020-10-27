@@ -16,14 +16,64 @@ function Navbar() {
     }
 
 
-    const teams = ["Előkészítő", "Mini korosztály", "Gyermek korosztály", "Serdülő korosztály",
-        "Kadett korosztály", "Junior korosztály", "Felnőtt korosztály"];
+    const teams = [
+        {
+            name: "Előkészítő",
+            link: "/elokeszito"
+        }, {
+            name: "Mini",
+            link: "/mini"
+        }, {
+            name: "Gyermek",
+            link: "/gyermek"
+        }, {
+            name: "Serdülő",
+            link: "/serdulo"
+        }, {
+            name: "Kadet",
+            link: "/kadet"
+        }, {
+            name: "Junior",
+            link: "/junior"
+        }, {
+            name: "Felnőtt",
+            link: "/felnott"
+        }
+    ];
 
-    const general = ["Házirend", "Tagdíjfizetés", "Felszerelés",
-        "Tao pályázat", "Támogatóink"];
+    const general = [
+        {
+            name: "Házirend",
+            link: "/hazirend"
+        }, {
+            name: "Tagdíjfizetés",
+            link: "/tagdij"
+        }, {
+            name: "Felszerelés",
+            link: "/felszereles"
+        }, {
+            name: "Tao pályázat",
+            link: "/tao"
+        }, {
+            name: "Támogatóink",
+            link: "/tamogatoink"
+        }
+    ];
 
-    const introduction = ["Klubtörténet", "Célkitűzések",
-        "Alapszabály"];
+    const introduction = [
+        {
+            name: "Klubtörténet",
+            link: "/tortenet"
+        },
+        {
+            name: "Célkitűzések",
+            link: "/celkituzesek"
+        },
+        {
+            name: "Alapszabály",
+            link: "/alapszabaly"
+        }
+    ];
 
     const contact = [
         {
@@ -87,44 +137,44 @@ function Navbar() {
 
     const listTeams =
         teams.map((team, index) => (
-            <Dropdown.Item eventKey={index} as={"button"}>{team}</Dropdown.Item>
+            <Dropdown.Item eventKey={index} as={"a"} href={team.link}>{team.name}</Dropdown.Item>
         ))
 
     const listGeneral =
         general.map((element, index) => (
-            <Dropdown.Item eventKey={index} as={"button"}>{element}</Dropdown.Item>
+            <Dropdown.Item eventKey={index} as={"a"} href={element.link}>{element.name}</Dropdown.Item>
         ))
 
     const listIntroduction =
         introduction.map((element, index) => (
-            <Dropdown.Item eventKey={index} as={"button"}>{element}</Dropdown.Item>
+            <Dropdown.Item eventKey={index} as={"a"} href={element.link}>{element.name}</Dropdown.Item>
         ))
 
     const listContact =
         contact.map((contact, index) => (
-            <Dropdown.Item eventKey={index} as={"button"}>{contact}</Dropdown.Item>
+            <Dropdown.Item eventKey={index} as={"a"} href={contact.link}>{contact.name}</Dropdown.Item>
         ))
 
     const listPrograms =
         program.map((program, index) => (
-            <Dropdown.Item eventKey={index} as={"button"}>{program}</Dropdown.Item>
+            <Dropdown.Item eventKey={index} as={"a"} href={program.link}>{program.name}</Dropdown.Item>
         ))
 
     const listResults =
         results.map((result, index) => (
-            <Dropdown.Item eventKey={index} as={"button"}>{result}</Dropdown.Item>
+            <Dropdown.Item eventKey={index} as={"a"} href={result.link}>{result.name}</Dropdown.Item>
         ))
 
     const listLinks =
         links.map((link, index) => (
-            <Dropdown.Item eventKey={index} as={"button"}>{link}</Dropdown.Item>
+            <Dropdown.Item eventKey={index} as={"a"} href={link.link}>{link.name}</Dropdown.Item>
         ))
 
 
     return (
         <div style={navbarStyle}>
             <DropdownButton title={"Bemutatkozás"} as={"ButtonGroup"}
-                                                 variant={"warning"}>{listIntroduction}</DropdownButton>
+                            variant={"warning"}>{listIntroduction}</DropdownButton>
             <DropdownButton title={"Tudnivalók"} as={"ButtonGroup"} variant={"warning"}>{listGeneral}</DropdownButton>
             <DropdownButton title={"Kapcsolat"} as={"ButtonGroup"} variant={"warning"}>{listContact}</DropdownButton>
             <DropdownButton title={"Program"} as={"ButtonGroup"} variant={"warning"}>{listPrograms}</DropdownButton>

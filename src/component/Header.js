@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "react-bootstrap/cjs/Button";
 
-
 function Header() {
 
     const HeaderStyle = {
@@ -12,10 +11,12 @@ function Header() {
         borderBottom: "solid rgba(240, 240, 240, .20)",
         borderWidth: "0.1em",
         backgroundColor: "#010101",
+        //backgroundColor: "#FFE909",
         position: "relative",
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        //background:"url(/BLFHeader.png)",
     }
 
     const TitleStyle = {
@@ -36,14 +37,13 @@ function Header() {
     return (
         <React.Fragment>
             <div style={HeaderStyle}>
-                <div style={TitleStyle}>
-                    Hello
-                </div>
-                <Button variant={"warning"} href={"/home"}>Home</Button>
-                <div>
-                    <a href="#" className="fa fa-facebook" style={socialIconStyle}/>
-                    <Button variant={"warning"} href={"/login"}>Login</Button>
 
+                <Button variant={"warning"} href={"/home"}>Home</Button>
+
+                <div>
+                    <a href="https://hu-hu.facebook.com/pages/category/Sports-Club/BLF-KK-163706773676495/"
+                       className="fa fa-facebook" style={socialIconStyle}/>
+                    <Button variant={"warning"} href={"/login"}>Login</Button>
                 </div>
             </div>
         </React.Fragment>
