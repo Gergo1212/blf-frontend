@@ -23,6 +23,15 @@ function Header() {
         left: "50%",
         transform: "translateX(-50%)"
     }
+    const socialIconStyle = {
+        //right: "0",
+        //padding: "20px",
+        fontSize: "30px",
+        width: "30px",
+        textAlign: "center",
+        textDecoration: "none",
+        borderRadius: "50%",
+    }
 
     return (
         <React.Fragment>
@@ -31,7 +40,11 @@ function Header() {
                     Hello
                 </div>
                 <Button variant={"warning"} href={"/home"}>Home</Button>
-                <Button variant={"warning"} href={"/login"}>Login</Button>
+                <div>
+                    <a href="#" className="fa fa-facebook" style={socialIconStyle}/>
+                    <Button variant={"warning"} href={"/login"}>Login</Button>
+
+                </div>
             </div>
         </React.Fragment>
     )
