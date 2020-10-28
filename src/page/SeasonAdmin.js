@@ -15,17 +15,17 @@ function SeasonAdmin() {
             </tr>
         ));
 
-    /*   const seasonToSend = {
+       const seasonToSend = {
            date: "123456-78910"
        }
        const addSeason = () => {
-           axios.post("http://localhost:8091/season/add", seasonToSend,{
+           axios.post("http://localhost:8762/game/season/add", seasonToSend,{
                "Content-Type": "application/json;charset=UTF-8;"
                }
            )
                .then(response => console.log(response))
                .catch((error) => console.log(error))
-       }*/
+       }
     function listColumns() {
 
         if (seasons.length !== 0) {
@@ -39,7 +39,7 @@ function SeasonAdmin() {
 
     return (
         <div>
-            {/* <button onClick={addSeason}>ADDSEASON</button>*/}
+             <button onClick={addSeason}>ADDSEASON</button>
             <table>
                 <thead>
                 <tr>

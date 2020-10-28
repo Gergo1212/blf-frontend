@@ -21,11 +21,11 @@ function Admin() {
     }
     const buttons = [
         {
-            name: "Szezonok", link: "/seasonadmin"
+            name: "Szezonok", link: "/admin/season"
         },
         {
             name: "Ligák",
-            link: "/leagueadmin"
+            link: "/admin/league"
         },
         {
             name: "Meccsek",
