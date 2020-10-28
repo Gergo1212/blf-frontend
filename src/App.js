@@ -2,11 +2,13 @@ import React from 'react';
 import Header from "./component/Header";
 import Navbar from "./component/Navbar";
 import Footer from "./component/Footer";
+import Rules from "./page/Rules";
+import SeasonAdmin from "./page/SeasonAdmin";
+import Main from "./page/Main";
+import {SeasonProvider} from "./context/SeasonContext";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import Rules from "./page/Rules";
 import Admin from "./page/Admin";
-import {SeasonProvider} from "./context/SeasonContext";
 
 function App() {
 
@@ -29,7 +31,9 @@ function App() {
                     <Header/>
                     <Navbar/>
                     <Switch>
+                        <Route exact path={"/"} component={Main}/>
                         <Route exact path={"/rules"} component={Rules}/>
+                        <Route exact path={"/seasonadmin"} component={SeasonAdmin}/>
                         <Route exact path={"/admin"} component={Admin}/>
                     </Switch>
                     <Footer/>

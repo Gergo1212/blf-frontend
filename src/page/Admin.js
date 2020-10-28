@@ -1,43 +1,68 @@
-import React, {useContext, useEffect, useState} from "react";
-import {SeasonContext} from "../context/SeasonContext";
-import axios from "axios";
+import React from "react";
+import {Button} from "react-bootstrap";
 
 function Admin() {
 
-    const {seasons} = useContext(SeasonContext);
-
-    const listSeasons =
-        seasons.map((season) => (
-            <tr>
-                <td key={season.id}>{season.id}</td>
-                <td>{season.date}</td>
-            </tr>
-        ));
-
-    const addSeason = () => {
-        axios.post("http://localhost:8091/season/add",
-            {
-                date: "2222-2345"
-            })
-
+    const adminStyle = {
+        color: "white",
+        padding: "1% 2%",
+        width: "100%",
+        textAlign: "center",
+        alignItems: "center",
+        borderBottom: "solid rgba(240, 240, 240, .20)",
+        borderWidth: "0.1em",
+        backgroundColor: "#010101",
+        //backgroundColor: "#FFE909",
+        position: "relative",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        //backgroundImage:"url(/BLFHeader.png)",
     }
+    const buttons = [
+        {
+            name: "Szezonok", link: "/seasonadmin"
+        },
+        {
+            name: "Ligák",
+            link: "/leagueadmin"
+        },
+        {
+            name: "Meccsek",
+            link: "/matchadmin"
+        },
+        {
+            name: "Játékosok",
+            link: "/playeradmin"
+        },
+        {
+            name: "Csapatok",
+            link: "/teamadmin"
+        },
+        {
+            name: "Csapattagok",
+            link: "/teammemberadmin"
+        },
+        {
+            name: "Felhasználó",
+            link: "useradmin"
+        },
+        {
+            name: "Statisztika",
+            link: "statadmin"
+        },
+    ]
+
+    const listMenuButtons =
+        buttons.map((button, index) => (
+            <Button variant={"warning"} accessKey={index}
+                    href={button.link}>{button.name}</Button>
+        ))
 
     return (
         <div>
-            <button onClick={addSeason}>ADDSEASON</button>
-            <table>
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Date</th>
-                </tr>
-                </thead>
-                <tbody>
-                {seasons && listSeasons}
-                </tbody>
-            </table>
+            {listMenuButtons}
         </div>
-
     )
 }
 
