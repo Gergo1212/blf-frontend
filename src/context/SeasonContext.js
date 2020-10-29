@@ -5,6 +5,7 @@ export const SeasonContext = createContext();
 
 
 export const SeasonProvider = (props) => {
+
     const urlForSeasons = "http://localhost:8762/game/season";
 
     const [seasons, setSeasons] = useState([]);

@@ -7,12 +7,13 @@ function Footer() {
         textAlign: "center",
         backgroundColor: "lightgrey",
         width: "100%",
-        position:"absolute",
+        //position:"fixed",
         bottom:0,
-        height:"10%",
+        minHeight:"100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        marginBottom:"-50px"
     }
 
     return (

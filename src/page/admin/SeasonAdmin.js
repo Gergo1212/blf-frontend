@@ -1,7 +1,9 @@
 import React, {useContext} from "react";
-import {SeasonContext} from "../context/SeasonContext";
+import {SeasonContext} from "../../context/SeasonContext";
 import axios from "axios";
-import TableCreator from "../component/TableCreator";
+import TableCreator from "../../component/TableCreator";
+import AdminNavbar from "../../component/AdminNavbar";
+import {RecentActors} from "@material-ui/icons";
 
 
 function SeasonAdmin() {
@@ -19,11 +21,12 @@ function SeasonAdmin() {
 
 
     return (
-        <TableCreator inputObjects={seasons} prefix="season">
+        <React.Fragment>
+            <AdminNavbar/>
+            <TableCreator inputObjects={seasons} prefix="season"/>
 
-        </TableCreator>
+        </React.Fragment>
     )
 }
-
 
 export default SeasonAdmin;

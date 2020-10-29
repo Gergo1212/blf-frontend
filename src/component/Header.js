@@ -43,20 +43,22 @@ function Header() {
         flexWrap: "nowrap",
         alignItems: "center",
         justifyContent: "space-around",
-        width: "130px",
+        width: "20%",
+
     }
 
     return (
         <React.Fragment>
             <div style={HeaderStyle}>
 
-                <a href={"/home"}>
+                <a href={"/"}>
                     <img src="/labda_01.png" style={imageStyle}/>
                 </a>
                 <div style={divStyle}>
                     <a href="https://hu-hu.facebook.com/pages/category/Sports-Club/BLF-KK-163706773676495/"
                        className="fa fa-facebook" style={socialIconStyle}/>
                     <Button variant={"warning"} href={"/login"}>Belépés</Button>
+                    <Button variant={"warning"} href={"/admin"}>Szerkesztő</Button>
                 </div>
             </div>
         </React.Fragment>

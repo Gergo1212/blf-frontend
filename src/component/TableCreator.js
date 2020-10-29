@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../style/Table.css";
 function TableCreator(props) {
 
     function getPropertyNames(objectArray) {
@@ -12,7 +12,7 @@ function TableCreator(props) {
 
     function createTableColumnNames(propertyNamesArray) {
         if (propertyNamesArray.length !== 0) {
-           return  propertyNamesArray.map((property, index) => {
+            return propertyNamesArray.map((property, index) => {
                 return <th key={index}>{property}</th>
             });
         }
@@ -20,31 +20,40 @@ function TableCreator(props) {
 
     function listElementsFromContext(keyPrefix, contextElements, propertyNamesArray) {
         if (contextElements.length !== 0) {
-
             return contextElements.map((element, index) => {
                 return <tr key={keyPrefix + index}>
                     {propertyNamesArray.map((propertyName, secondIndex) => {
-                        return <td key={keyPrefix + "row" + secondIndex}>{element[propertyName]}</td>
+                        return <td onClick={clickHandler}
+                                   key={keyPrefix + secondIndex}>{element[propertyName]}</td>
                     })}
                 </tr>
             })
         }
     }
 
+    function clickHandler() {
+
+        console.log()
+        //return <Redirect to="/"/>
+
+    }
+
     const tableStyle = {
         color: "white",
+        textAlign: "center",
+        backgroundColor: "green"
     }
 
     return (
         <div>
-            <table style={tableStyle}>
+            <table>
                 <thead>
                 <tr>
                     {createTableColumnNames(getPropertyNames(props.inputObjects))}
                 </tr>
                 </thead>
                 <tbody>
-                    {listElementsFromContext(props.prefix, props.inputObjects, getPropertyNames(props.inputObjects))}
+                {listElementsFromContext(props.prefix, props.inputObjects, getPropertyNames(props.inputObjects))}
                 </tbody>
             </table>
         </div>

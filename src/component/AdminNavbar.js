@@ -1,24 +1,8 @@
-import React from "react";
 import {Button} from "react-bootstrap";
+import React from "react";
 
-function Admin() {
+function AdminNavbar() {
 
-    const adminStyle = {
-        color: "white",
-        padding: "1% 2%",
-        width: "100%",
-        textAlign: "center",
-        alignItems: "center",
-        borderBottom: "solid rgba(240, 240, 240, .20)",
-        borderWidth: "0.1em",
-        backgroundColor: "#010101",
-        //backgroundColor: "#FFE909",
-        position: "relative",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        //backgroundImage:"url(/BLFHeader.png)",
-    }
     const buttons = [
         {
             name: "Szezonok",
@@ -45,7 +29,7 @@ function Admin() {
             link: "/admin/teammember"
         },
         {
-            name: "Felhasználó",
+            name: "Felhasználók",
             link: "/admin/user"
         },
         {
@@ -54,17 +38,23 @@ function Admin() {
         },
     ]
 
-    const listMenuButtons =
+    const listAdminMenuButtons =
         buttons.map((button, index) => (
             <Button variant={"warning"} accessKey={index}
                     href={button.link}>{button.name}</Button>
         ))
-
+    const navbarStyle = {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: "100%",
+        padding: "1%"
+    }
     return (
-        <div>
-            {listMenuButtons}
+        <div style={navbarStyle}>
+            {listAdminMenuButtons}
         </div>
     )
 }
+export default AdminNavbar;
 
-export default Admin;
