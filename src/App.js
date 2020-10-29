@@ -1,15 +1,16 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Header from "./component/Header";
 import Navbar from "./component/Navbar";
 import Footer from "./component/Footer";
 import Rules from "./page/Rules";
-import SeasonAdmin from "./page/SeasonAdmin";
 import Main from "./page/Main";
 import {SeasonProvider} from "./context/SeasonContext";
 import {LeagueProvider} from "./context/LeagueContext";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Admin from "./page/Admin";
+import SeasonAdmin from "./page/SeasonAdmin";
+import LeagueAdmin from "./page/LeagueAdmin";
 
 function App() {
 
@@ -37,7 +38,7 @@ function App() {
                             <Route exact path={"/rules"} component={Rules}/>
                             <Route exact path={"/admin"} component={Admin}/>
                             <Route exact path={"/admin/season"} component={SeasonAdmin}/>
-                            <Route exact path={"/admin/league"} component={Admin}/>
+                            <Route exact path={"/admin/league"} component={LeagueAdmin}/>
                         </Switch>
                         <Footer/>
                     </Router>

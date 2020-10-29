@@ -21,7 +21,8 @@ function Admin() {
     }
     const buttons = [
         {
-            name: "Szezonok", link: "/admin/season"
+            name: "Szezonok",
+            link: "/admin/season"
         },
         {
             name: "Ligák",
@@ -29,27 +30,27 @@ function Admin() {
         },
         {
             name: "Meccsek",
-            link: "/matchadmin"
+            link: "/admin/match"
         },
         {
             name: "Játékosok",
-            link: "/playeradmin"
+            link: "/admin/player"
         },
         {
             name: "Csapatok",
-            link: "/teamadmin"
+            link: "/admin/team"
         },
         {
             name: "Csapattagok",
-            link: "/teammemberadmin"
+            link: "/admin/teammember"
         },
         {
             name: "Felhasználó",
-            link: "useradmin"
+            link: "/admin/user"
         },
         {
             name: "Statisztika",
-            link: "statadmin"
+            link: "/admin/stat"
         },
     ]
 

@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, {createContext, useEffect, useState} from "react";
 import axios from "axios";
-import {SeasonContext} from "./SeasonContext";
+
+export const LeagueContext = createContext();
 
 export const LeagueProvider = (props) =>{
     const urlForLeagues = "http://localhost:8762/game/league";
@@ -17,8 +18,8 @@ export const LeagueProvider = (props) =>{
 
 
     return (
-        <SeasonContext.Provider value={{leagues}}>
+        <LeagueContext.Provider value={{leagues}}>
             {props.children}
-        </SeasonContext.Provider>
+        </LeagueContext.Provider>
     )
 }
