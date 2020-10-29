@@ -38,12 +38,6 @@ function TableCreator(props) {
 
     }
 
-    const tableStyle = {
-        color: "white",
-        textAlign: "center",
-        backgroundColor: "green"
-    }
-
     return (
         <div>
             <table>
