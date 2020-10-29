@@ -1,0 +1,13 @@
+
+.mainDiv{
+    min-height: 90vh;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    background-color: #010101;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    color: #dddddd;
+}
+

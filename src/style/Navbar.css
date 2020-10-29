@@ -1,0 +1,11 @@
+
+.navbarDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    padding: 1%;
+    overflow: visible;
+}
+

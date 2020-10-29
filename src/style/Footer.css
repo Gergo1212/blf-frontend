@@ -1,0 +1,12 @@
+footer{
+    background-color: lightgrey;
+    width: 90%;
+    height: 10%;
+    margin: auto;
+    bottom: 0;
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+

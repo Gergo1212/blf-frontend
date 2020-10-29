@@ -1,14 +1,13 @@
 import React from "react";
 import AdminNavbar from "../../component/AdminNavbar";
+import "../../style/Admin.css"
 
 function Admin() {
 
     return (
-
-        <React.Fragment>
+        <div className={"adminDiv"}>
             <AdminNavbar/>
-            AAAA
-        </React.Fragment>
+        </div>
     )
 }
 

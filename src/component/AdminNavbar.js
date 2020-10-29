@@ -1,6 +1,6 @@
 import {Button} from "react-bootstrap";
 import React from "react";
-
+import "../style/AdminNavbar.css"
 function AdminNavbar() {
 
     const buttons = [
@@ -43,15 +43,9 @@ function AdminNavbar() {
             <Button variant={"warning"} accessKey={index}
                     href={button.link}>{button.name}</Button>
         ))
-    const navbarStyle = {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        width: "100%",
-        padding: "1%"
-    }
+
     return (
-        <div style={navbarStyle}>
+        <div className={"adminNavbarElements"}>
             {listAdminMenuButtons}
         </div>
     )

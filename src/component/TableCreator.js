@@ -21,7 +21,7 @@ function TableCreator(props) {
     function listElementsFromContext(keyPrefix, contextElements, propertyNamesArray) {
         if (contextElements.length !== 0) {
             return contextElements.map((element, index) => {
-                return <tr key={keyPrefix + index}>
+                return <tr key={keyPrefix + index} className="rowsToHover">
                     {propertyNamesArray.map((propertyName, secondIndex) => {
                         return <td onClick={clickHandler}
                                    key={keyPrefix + secondIndex}>{element[propertyName]}</td>

@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import {LeagueContext} from "../../context/LeagueContext";
 import TableCreator from "../../component/TableCreator";
 import AdminNavbar from "../../component/AdminNavbar";
-
+import "../../style/Leagueadmin.css"
 function LeagueAdmin() {
 
     const {leagues} = useContext(LeagueContext);
@@ -10,19 +10,19 @@ function LeagueAdmin() {
         {
             name: "teszt",
             id: 123,
-            valami: "afsfaf",
-            liga: "nvc,x,nv",
+            csapat: "teszt csapat",
+            liga: "teszt liga",
         }
 
-    let y =[];
+    let y = [];
     for (let i = 0; i < 16; i++) {
         y.push(x)
     }
     return (
-        <React.Fragment>
+        <div className={"leagueAdminDiv"}>
             <AdminNavbar/>
             <TableCreator inputObjects={y} preFix="league"/>
-        </React.Fragment>
+        </div>
 
 
     )

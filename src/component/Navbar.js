@@ -2,7 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/cjs/Button";
 import DropdownButton from "react-bootstrap/cjs/DropdownButton";
 import Dropdown from "react-bootstrap/cjs/Dropdown";
-
+import "../style/Navbar.css";
 
 function Navbar() {
 
@@ -166,12 +166,12 @@ function Navbar() {
 
     const listLinks =
         links.map((link, index) => (
-            <Dropdown.Item eventKey={index} as={"a"} href={link.link}>{link.name}</Dropdown.Item>
+            <Dropdown.Item eventKey={index} as={"a"} href={link.link} target="_blank">{link.name}</Dropdown.Item>
         ))
 
 
     return (
-        <div style={navbarStyle}>
+        <div className={"navbarDiv"}>
             <DropdownButton title={"Bemutatkozás"} as={"ButtonGroup"}
                             variant={"warning"}>{listIntroduction}</DropdownButton>
             <DropdownButton title={"Tudnivalók"} as={"ButtonGroup"} variant={"warning"}>{listGeneral}</DropdownButton>

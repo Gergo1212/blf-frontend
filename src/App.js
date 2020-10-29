@@ -13,7 +13,6 @@ import Admin from "./page/admin/Admin";
 import SeasonAdmin from "./page/admin/SeasonAdmin";
 import LeagueAdmin from "./page/admin/LeagueAdmin";
 import TeamAdmin from "./page/admin/TeamAdmin";
-import AdminNavbar from "./component/AdminNavbar";
 
 function App() {
 
@@ -32,7 +31,7 @@ function App() {
     }
 
     return (
-        <div style={appStyle} className="App">
+        <div style={{backgroundColor:"#010101"}} className="App">
             <SeasonProvider>
                 <LeagueProvider>
                     <TeamProvider>

@@ -1,9 +1,8 @@
 import React, {useContext} from "react";
 import {SeasonContext} from "../../context/SeasonContext";
-import axios from "axios";
 import TableCreator from "../../component/TableCreator";
 import AdminNavbar from "../../component/AdminNavbar";
-import {RecentActors} from "@material-ui/icons";
+import "../../style/Leagueadmin.css"
 
 
 function SeasonAdmin() {
@@ -21,11 +20,10 @@ function SeasonAdmin() {
 
 
     return (
-        <React.Fragment>
+        <div className={"leagueAdminDiv"}>
             <AdminNavbar/>
             <TableCreator inputObjects={seasons} prefix="season"/>
-
-        </React.Fragment>
+        </div>
     )
 }
 

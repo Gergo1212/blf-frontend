@@ -19,7 +19,7 @@ table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-table tr:hover {
+.rowsToHover:hover {
     background-color: #ddd;
     cursor: pointer;
 }
@@ -36,3 +36,4 @@ table th {
 div {
     overflow-x: auto;
 }
+
