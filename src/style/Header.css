@@ -23,7 +23,7 @@
     width: 22%;
 }
 
-.aaa {
+.socialButton {
     font-size: 30px;
     width: 30px;
     text-align: center;
@@ -34,4 +34,23 @@
 img{
     width: 90px;
     height: 70px;
+}
+
+
+.button {
+    background-color: rgb(255 193 5);
+    border:none;
+    border-radius: 5px;
+    color: black;
+    padding: 6px 12px ;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    width: auto;
+}
+
+.button:hover{
+    opacity: 0.9;
+    transition: 0.3s;
 }

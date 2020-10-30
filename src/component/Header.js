@@ -1,6 +1,5 @@
 import React from "react";
-import Button from "react-bootstrap/cjs/Button";
-import "../style/Header.css"
+import "../style/Header.css";
 
 function Header() {
 
@@ -8,13 +7,17 @@ function Header() {
         <React.Fragment>
             <div className="headerDiv">
                 <a href={"/"}>
-                    <img src="/labda_01.png" />
+                    <img src={"/labda_01.png"} alt={"logo"}/>
                 </a>
                 <div className={"socialDiv"}>
                     <a href="https://hu-hu.facebook.com/pages/category/Sports-Club/BLF-KK-163706773676495/"
-                       className="fa fa-facebook aaa" target="_blank"/>
-                    <Button variant={"warning"} href={"/login"}>Belépés</Button>
-                    <Button variant={"warning"} href={"/admin"}>Szerkesztő</Button>
+                       className="fa fa-facebook socialButton" target="_blank" rel={"noopener"}/>
+                    <a href={"/login"}>
+                        <button className={"button"}>Belépés</button>
+                    </a>
+                    <a href={"/admin"}>
+                        <button className={"button"}>Szerkesztő</button>
+                    </a>
                 </div>
             </div>
         </React.Fragment>
