@@ -1,19 +1,7 @@
 import React from "react";
-import Button from "react-bootstrap/cjs/Button";
-import DropdownButton from "react-bootstrap/cjs/DropdownButton";
-import Dropdown from "react-bootstrap/cjs/Dropdown";
 import "../style/Navbar.css";
 
 function Navbar() {
-
-    const navbarStyle = {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        width: "100%",
-        padding: "1%"
-    }
-
 
     const teams = [
         {
@@ -134,55 +122,46 @@ function Navbar() {
         },
     ];
 
-    const listTeams =
-        teams.map((team, index) => (
-            <Dropdown.Item eventKey={index} as={"a"} href={team.link}>{team.name}</Dropdown.Item>
+    const navbarButtonNames = ["Bemutatkozás", "Tudnivalók", "Kapcsolat",
+        "Program", "Eredmények", "Csapatok", "Linkek"];
+
+    const categories = [introduction, general, contact, program, results, teams, links];
+
+    const test =
+        <div className={"dropDownContent"}>
+            <a href="/valami">egy</a>
+            <a href="/valami">kettő</a>
+            <a href="/valami">három</a>
+        </div>
+
+
+    const dropDownCreator =
+        categories.map((category) => (
+            <div className={"dropDownContent"}>
+                {category.map((element) => (
+                    <a href={element.link}>{element.name}</a>
+                ))}
+            </div>
         ))
 
-    const listGeneral =
-        general.map((element, index) => (
-            <Dropdown.Item eventKey={index} as={"a"} href={element.link}>{element.name}</Dropdown.Item>
-        ))
-
-    const listIntroduction =
-        introduction.map((element, index) => (
-            <Dropdown.Item eventKey={index} as={"a"} href={element.link}>{element.name}</Dropdown.Item>
-        ))
-
-    const listContact =
-        contact.map((contact, index) => (
-            <Dropdown.Item eventKey={index} as={"a"} href={contact.link}>{contact.name}</Dropdown.Item>
-        ))
-
-    const listPrograms =
-        program.map((program, index) => (
-            <Dropdown.Item eventKey={index} as={"a"} href={program.link}>{program.name}</Dropdown.Item>
-        ))
-
-    const listResults =
-        results.map((result, index) => (
-            <Dropdown.Item eventKey={index} as={"a"} href={result.link}>{result.name}</Dropdown.Item>
-        ))
-
-    const listLinks =
-        links.map((link, index) => (
-            <Dropdown.Item eventKey={index} as={"a"} href={link.link} target="_blank">{link.name}</Dropdown.Item>
+    const navbarButtonCreator =
+        navbarButtonNames.map((buttonName) => (
+            <div className={"dropDown"}>
+                <button className={"button dropBtn"}>{buttonName}
+                    <i className={"fas fa-caret-down"} />
+                </button>
+                    {test}
+            </div>
         ))
 
 
     return (
         <div className={"navbarDiv"}>
-            <DropdownButton title={"Bemutatkozás"} as={"ButtonGroup"}
-                            variant={"warning"}>{listIntroduction}</DropdownButton>
-            <DropdownButton title={"Tudnivalók"} as={"ButtonGroup"} variant={"warning"}>{listGeneral}</DropdownButton>
-            <DropdownButton title={"Kapcsolat"} as={"ButtonGroup"} variant={"warning"}>{listContact}</DropdownButton>
-            <DropdownButton title={"Program"} as={"ButtonGroup"} variant={"warning"}>{listPrograms}</DropdownButton>
-            <DropdownButton title={"Eredmények"} as={"ButtonGroup"} variant={"warning"}>{listResults}</DropdownButton>
-            <DropdownButton title={"Csapatok"} as={"ButtonGroup"} variant={"warning"}>{listTeams}</DropdownButton>
-            <DropdownButton title={"Linkek"} as={"ButtonGroup"} variant={"warning"}>{listLinks}</DropdownButton>
-            <Button variant={"warning"}>Statisztika</Button>
-            <Button variant={"warning"}>Edzések</Button>
-            <Button variant={"warning"} href={"/rules"}>Játékosok</Button>
+            {navbarButtonCreator}
+            <i className={"fas fa-caret-down"} data-fa-transform={"grow-8"}/>
+            <button className={"button"}>Statisztika</button>
+            <button className={"button"}>Edzések</button>
+            <button className={"button"}>Játékosok</button>
         </div>
     )
 }
