@@ -15,7 +15,7 @@ background-color: black;
     width: auto;
 }
 
-.button:hover {
+.button:hover, .socialButton:hover {
     opacity: 0.9;
     transition: 0.3s;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import {func} from "prop-types";
 
 function Navbar() {
 
@@ -126,37 +127,29 @@ function Navbar() {
 
     const categories = [introduction, general, contact, program, results, teams, links];
 
-    const test =
-        <div className={"dropDownContent"}>
-            <a href="/valami">egy</a>
-            <a href="/valami">kettő</a>
-            <a href="/valami">három</a>
-        </div>
+    function buttonCreator() {
+        let div = [];
 
-
-    const dropDownCreator =
-        categories.map((category) => (
-            <div className={"dropDownContent"}>
-                {category.map((element) => (
-                    <a href={element.link}>{element.name}</a>
-                ))}
-            </div>
-        ))
-
-    const navbarButtonCreator =
-        navbarButtonNames.map((buttonName) => (
-            <div className={"dropDown"}>
-                <button className={"button dropBtn"}>{buttonName}
-                    <i className={"fas fa-caret-down"} />
-                </button>
-                    {test}
-            </div>
-        ))
+        for (let i = 0; i < categories.length; i++) {
+            div.push(
+                <div className={"dropDown"}>
+                    <button className={"button dropBtn"}>{navbarButtonNames[i]}
+                        <i className={"fas fa-caret-down"}/>
+                    </button>
+                    <div className={"dropDownContent"}>
+                        {categories[i].map((element) => (
+                            <a href={element.link}>{element.name}</a>
+                        ))}
+                    </div>
+                </div>)
+        }
+        return div;
+    }
 
 
     return (
         <div className={"navbarDiv"}>
-            {navbarButtonCreator}
+            {buttonCreator()}
             <button className={"button"}>Statisztika</button>
             <button className={"button"}>Edzések</button>
             <button className={"button"}>Játékosok</button>
