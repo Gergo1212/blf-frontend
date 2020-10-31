@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Header from "./component/Header";
 import Navbar from "./component/Navbar";
@@ -13,22 +12,12 @@ import Admin from "./page/admin/Admin";
 import SeasonAdmin from "./page/admin/SeasonAdmin";
 import LeagueAdmin from "./page/admin/LeagueAdmin";
 import TeamAdmin from "./page/admin/TeamAdmin";
-import "./style/Header.css";
-import "./style/Navbar.css";
-import "./style/Button.css";
-import "./style/Footer.css";
-import "./style/RenderDiv.css";
-import "./style/Table.css";
-import "./style/RenderDiv.css";
-
-
-
 
 
 function App() {
 
     return (
-        <div style={{backgroundColor:"#010101"}} className="App">
+        <div className="App">
             <SeasonProvider>
                 <LeagueProvider>
                     <TeamProvider>

@@ -1,0 +1,162 @@
+html{
+background-color: black;
+}
+
+.button {
+    background-color: rgb(255 193 5);
+    border: none;
+    border-radius: 5px;
+    color: black;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    width: auto;
+}
+
+.button:hover {
+    opacity: 0.9;
+    transition: 0.3s;
+}
+
+footer {
+    background-color: lightgrey;
+    width: 90%;
+    height: 10%;
+    margin: auto;
+    bottom: 0;
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.headerDiv {
+    color: #dddddd;
+    width: 90%;
+    padding: 1% 2%;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    border-bottom: solid rgba(240, 240, 240, .20);
+    border-width: 0.1em;
+    background-color: #010101;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.socialDiv {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 22%;
+}
+
+.socialButton {
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+    color: rgb(3 127 217);
+}
+
+.logo {
+    width: 90px;
+    height: 70px;
+}
+
+
+.navbarDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    padding: 1%;
+    overflow: visible;
+}
+
+
+.dropDownContent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropDownContent a {
+    float: none;
+    color: grey;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropDownContent a:hover {
+    background-color: #ddd;
+}
+
+.dropDown:hover .dropDownContent {
+    display: block;
+}
+
+
+.renderDiv {
+    min-height: 90vh;
+    color: #dddddd;
+    background-color: #010101;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+}
+
+
+table {
+    overflow: auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 5px;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+table td, table th {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.rowsToHover:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: darkgrey;
+    color: black;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+

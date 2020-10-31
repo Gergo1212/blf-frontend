@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import "./style/Index.css";
 
 ReactDOM.render(
   <React.StrictMode>

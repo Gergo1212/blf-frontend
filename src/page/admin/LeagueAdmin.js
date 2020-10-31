@@ -6,6 +6,7 @@ import AdminNavbar from "../../component/AdminNavbar";
 function LeagueAdmin() {
 
     const {leagues} = useContext(LeagueContext);
+
     let x =
         {
             name: "teszt",
@@ -15,6 +16,7 @@ function LeagueAdmin() {
         }
 
     let y = [];
+
     for (let i = 0; i < 16; i++) {
         y.push(x)
     }
