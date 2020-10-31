@@ -1,5 +1,4 @@
 import React from "react";
-import "../style/Navbar.css";
 
 function Navbar() {
 
@@ -158,7 +157,6 @@ function Navbar() {
     return (
         <div className={"navbarDiv"}>
             {navbarButtonCreator}
-            <i className={"fas fa-caret-down"} data-fa-transform={"grow-8"}/>
             <button className={"button"}>Statisztika</button>
             <button className={"button"}>Edzések</button>
             <button className={"button"}>Játékosok</button>

@@ -1,6 +1,5 @@
-import {Button} from "react-bootstrap";
 import React from "react";
-import "../style/AdminNavbar.css"
+
 function AdminNavbar() {
 
     const buttons = [
@@ -40,15 +39,18 @@ function AdminNavbar() {
 
     const listAdminMenuButtons =
         buttons.map((button, index) => (
-            <Button variant={"warning"} accessKey={index}
-                    href={button.link}>{button.name}</Button>
+            <a href={button.link}>
+                <button className={"button"}>{button.name}</button>
+            </a>
         ))
 
     return (
-        <div className={"adminNavbarElements"}>
+        <div className={"navbarDiv"}>
             {listAdminMenuButtons}
+
         </div>
     )
 }
+
 export default AdminNavbar;
 

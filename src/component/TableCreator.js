@@ -1,5 +1,5 @@
 import React from "react";
-import "../style/Table.css";
+
 function TableCreator(props) {
 
     function getPropertyNames(objectArray) {
@@ -23,34 +23,24 @@ function TableCreator(props) {
             return contextElements.map((element, index) => {
                 return <tr key={keyPrefix + index} className="rowsToHover">
                     {propertyNamesArray.map((propertyName, secondIndex) => {
-                        return <td onClick={clickHandler}
-                                   key={keyPrefix + secondIndex}>{element[propertyName]}</td>
+                        return <td key={keyPrefix + secondIndex}>{element[propertyName]}</td>
                     })}
                 </tr>
             })
         }
     }
 
-    function clickHandler() {
-
-        console.log()
-        //return <Redirect to="/"/>
-
-    }
-
     return (
-        <div>
             <table>
                 <thead>
-                <tr>
-                    {createTableColumnNames(getPropertyNames(props.inputObjects))}
-                </tr>
+                    <tr>
+                        {createTableColumnNames(getPropertyNames(props.inputObjects))}
+                    </tr>
                 </thead>
                 <tbody>
-                {listElementsFromContext(props.prefix, props.inputObjects, getPropertyNames(props.inputObjects))}
+                    {listElementsFromContext(props.prefix, props.inputObjects, getPropertyNames(props.inputObjects))}
                 </tbody>
             </table>
-        </div>
     )
 }
 

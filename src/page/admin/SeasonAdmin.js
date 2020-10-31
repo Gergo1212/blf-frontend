@@ -2,8 +2,6 @@ import React, {useContext} from "react";
 import {SeasonContext} from "../../context/SeasonContext";
 import TableCreator from "../../component/TableCreator";
 import AdminNavbar from "../../component/AdminNavbar";
-import "../../style/Leagueadmin.css"
-
 
 function SeasonAdmin() {
 
@@ -20,10 +18,10 @@ function SeasonAdmin() {
 
 
     return (
-        <div className={"leagueAdminDiv"}>
+        <React.Fragment>
             <AdminNavbar/>
             <TableCreator inputObjects={seasons} prefix="season"/>
-        </div>
+        </React.Fragment>
     )
 }
 

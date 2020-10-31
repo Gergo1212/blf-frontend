@@ -13,22 +13,19 @@ import Admin from "./page/admin/Admin";
 import SeasonAdmin from "./page/admin/SeasonAdmin";
 import LeagueAdmin from "./page/admin/LeagueAdmin";
 import TeamAdmin from "./page/admin/TeamAdmin";
+import "./style/Header.css";
+import "./style/Navbar.css";
+import "./style/Button.css";
+import "./style/Footer.css";
+import "./style/RenderDiv.css";
+import "./style/Table.css";
+import "./style/RenderDiv.css";
+
+
+
+
 
 function App() {
-
-    const appStyle = {
-        width: "auto",
-        //Todo 100% height --> with full content
-        height: "100%",
-        minHeight: "100vh",
-        backgroundColor: "#010101",
-        //display: "flex",
-        //flexDirection: "column",
-        marginRight: "auto",
-        marginLeft: "auto",
-        alignItems: "center",
-        padding: "0 4%"
-    }
 
     return (
         <div style={{backgroundColor:"#010101"}} className="App">

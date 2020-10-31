@@ -2,7 +2,6 @@ import React, {useContext} from "react";
 import TableCreator from "../../component/TableCreator";
 import {TeamContext} from "../../context/TeamContext";
 import AdminNavbar from "../../component/AdminNavbar";
-import "../../style/Leagueadmin.css";
 
 
 function TeamAdmin() {
@@ -10,11 +9,10 @@ function TeamAdmin() {
     const {teams} = useContext(TeamContext);
 
     return (
-        <div className={"leagueAdminDiv"}>
+        <React.Fragment>
             <AdminNavbar/>
-            <TableCreator inputObjects={teams} prefix="season"/>
-        </div>
-
+            <TableCreator inputObjects={teams} prefix="team"/>
+        </React.Fragment>
     )
 }
 

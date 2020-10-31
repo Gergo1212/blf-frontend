@@ -1,11 +1,9 @@
 import React from "react";
-import "../style/Main.css"
 
 function Main() {
 
-
     return (
-        <div className={"mainDiv"}>
+        <div className={"renderDiv"}>
             <div className={"mainText"}>
                 MAIN PAGE
             </div>
