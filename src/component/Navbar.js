@@ -126,29 +126,24 @@ function Navbar() {
 
     const categories = [introduction, general, contact, program, results, teams, links];
 
-    function buttonCreator() {
-        let div = [];
-
-        for (let i = 0; i < categories.length; i++) {
-            div.push(
-                <div className={"dropDown"}>
-                    <button className={"button dropBtn"}>{navbarButtonNames[i]}
-                        <i className={"fas fa-caret-down"}/>
-                    </button>
-                    <div className={"dropDownContent"}>
-                        {categories[i].map((element) => (
-                            <a href={element.link}>{element.name}</a>
-                        ))}
-                    </div>
-                </div>)
-        }
-        return div;
-    }
+    const buttonCreator =
+        navbarButtonNames.map((buttonName, index) => (
+            <div className={"dropDown"}>
+                <button className={"button dropBtn"}>{buttonName}
+                    <i className={"fas fa-caret-down"}/>
+                </button>
+                <div className={"dropDownContent"}>
+                    {categories[index].map((element) => (
+                        <a href={element.link}>{element.name}</a>
+                    ))}
+                </div>
+            </div>
+        ))
 
 
     return (
         <div className={"navbarDiv"}>
-            {buttonCreator()}
+            {buttonCreator}
             <button className={"button"}>Statisztika</button>
             <button className={"button"}>Edzések</button>
             <button className={"button"}>Játékosok</button>
