@@ -15,16 +15,17 @@ function LeagueAdmin() {
             liga: "teszt liga",
         }
 
-    let y = [];
+    let testArray = [];
 
     for (let i = 0; i < 16; i++) {
-        y.push(x)
+        testArray.push(x)
     }
 
+    console.log(window.location.pathname)
     return (
         <React.Fragment>
             <AdminNavbar/>
-            <TableCreator inputObjects={y} preFix="league"/>
+            <TableCreator inputObjects={testArray} preFix="league"/>
         </React.Fragment>
     )
 }
