@@ -21,7 +21,7 @@ function LeagueAdmin() {
         testArray.push(x)
     }
 
-    console.log(window.location.pathname)
+
     return (
         <React.Fragment>
             <AdminNavbar/>
