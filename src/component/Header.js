@@ -9,8 +9,10 @@ function Header() {
             </a>
             <div className={"socialDiv"}>
                 <a href="https://hu-hu.facebook.com/pages/category/Sports-Club/BLF-KK-163706773676495/"
-                   className="fab fa-facebook-f socialButton"
-                   target="_blank" rel="noopener noreferrer"/>
+                   className="socialButton"
+                   target="_blank" rel="noopener noreferrer" aria-hidden="true">
+                    <i className={"fab fa-facebook-f"} aria-hidden={"true"}/>
+                </a>
                 <a href={"/login"}>
                     <button className={"button"}>Belépés</button>
                 </a>
