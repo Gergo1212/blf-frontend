@@ -134,7 +134,8 @@ function Navbar() {
                 </button>
                 <div className={"dropDownContent"}>
                     {categories[index].map((element) => (
-                        <a href={element.link}>{element.name}</a>
+                        <a href={element.link} target="_blank"
+                           rel="noopener noreferrer">{element.name}</a>
                     ))}
                 </div>
             </div>
