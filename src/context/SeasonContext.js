@@ -16,7 +16,7 @@ export const SeasonProvider = (props) => {
             .then((response) =>
                 setSeasons(response.data))
             .catch((error) => console.log(error));
-    }, []);
+    }, [seasons]);
 
 
     return (
