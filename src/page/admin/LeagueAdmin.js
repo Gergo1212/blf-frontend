@@ -7,25 +7,10 @@ function LeagueAdmin() {
 
     const {leagues} = useContext(LeagueContext);
 
-    let x =
-        {
-            name: "teszt",
-            id: 123,
-            csapat: "teszt csapat",
-            liga: "teszt liga",
-        }
-
-    let testArray = [];
-
-    for (let i = 0; i < 16; i++) {
-        testArray.push(x)
-    }
-
-
     return (
         <React.Fragment>
             <AdminNavbar/>
-            <TableCreator inputObjects={testArray} preFix="league"/>
+            <TableCreator inputObjects={leagues} preFix="league"/>
         </React.Fragment>
     )
 }

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import {useParams} from "react-router"
+import TableCreator from "../../component/TableCreator";
 
 function ElementView() {
 
@@ -27,10 +28,11 @@ function ElementView() {
         <li>{e}</li>
     ));*/
 
+
     return (
 
         <div className={"renderDiv"}>
-            <li>{element.date}</li>
+            <TableCreator inputObjects={element} preFix="league"/>
         </div>
     )
 

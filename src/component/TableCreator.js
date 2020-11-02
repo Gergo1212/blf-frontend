@@ -24,7 +24,7 @@ function TableCreator(props) {
                 <tr key={keyPrefix + index} className="rowsToHover">
                     {propertyNamesArray.map((propertyName, secondIndex) => (
                         <td key={keyPrefix + secondIndex}
-                            onClick={event => window.location.href =
+                            onClick={() => window.location.href =
                                 window.location.pathname + `/${element.id}`}
                         >{element[propertyName]}</td>
                     ))}
@@ -32,6 +32,10 @@ function TableCreator(props) {
             ))
         }
     }
+
+    /*
+    >{typeof element[propertyName] === "object" ? element[propertyName].id: element[propertyName]}</td>
+*/
 
     return (
         <table>

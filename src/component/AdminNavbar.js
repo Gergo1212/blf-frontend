@@ -47,7 +47,6 @@ function AdminNavbar() {
     return (
         <div className={"navbarDiv"}>
             {listAdminMenuButtons}
-
         </div>
     )
 }
