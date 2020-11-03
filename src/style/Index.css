@@ -111,6 +111,7 @@ footer {
 
 
 .renderDiv {
+    overflow-x: scroll;
     min-height: 90vh;
     color: #dddddd;
     background-color: #010101;
@@ -125,11 +126,10 @@ footer {
 
 table {
     overflow: auto;
-    overflow-x: scroll;
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 5px;
-    width: 90%;
+    width: auto;
     margin: auto;
     text-align: center;
     background-color: #fffe9d;
