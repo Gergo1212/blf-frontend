@@ -14,10 +14,10 @@ function Header() {
                     <i className={"fab fa-facebook-f"} aria-hidden={"true"}/>
                 </a>
                 <a href={"/login"}>
-                    <button className={"button"}>Belépés</button>
+                    <button className={"button roll-in-top"}>Belépés</button>
                 </a>
                 <a href={"/admin"}>
-                    <button className={"button"}>Szerkesztő</button>
+                    <button className={"button roll-in-top"}>Szerkesztő</button>
                 </a>
             </div>
         </div>

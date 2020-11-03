@@ -1,11 +1,14 @@
 import React from "react";
+import clip from "./admin/BLFWebsiteBackgroundVideo.mp4"
 
 function Main() {
 
     return (
         <div className={"renderDiv"}>
-            <div className={"mainText"}>
-                MAIN PAGE
+            <div className={"mainText videoShadow"}>
+                <video className='videoTag' autoPlay loop muted>
+                    <source src={clip} type='video/mp4' />
+                </video>
             </div>
         </div>
     )

@@ -129,10 +129,10 @@ function Navbar() {
     const buttonCreator =
         navbarButtonNames.map((buttonName, index) => (
             <div className={"dropDown"}>
-                <button className={"button dropBtn"}>{buttonName}
+                <button className={"button dropBtn roll-in-top"}>{buttonName}
                     <i className={"fas fa-caret-down"}/>
                 </button>
-                <div className={"dropDownContent"}>
+                <div className={"dropDownContent roll-in-top"}>
                     {categories[index].map((element) => (
                         <a href={element.link} target="_blank"
                            rel="noopener noreferrer">{element.name}</a>
@@ -145,9 +145,9 @@ function Navbar() {
     return (
         <div className={"navbarDiv"}>
             {buttonCreator}
-            <button className={"button"}>Statisztika</button>
-            <button className={"button"}>Edzések</button>
-            <button className={"button"}>Játékosok</button>
+            <button className={"button roll-in-top"}>Statisztika</button>
+            <button className={"button roll-in-top"}>Edzések</button>
+            <button className={"button roll-in-top"}>Játékosok</button>
         </div>
     )
 }
