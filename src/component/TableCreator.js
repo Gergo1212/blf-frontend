@@ -23,8 +23,8 @@ function TableCreator(props) {
             return contextElements.map((element, index) => (
                 <tr key={keyPrefix + index} className="rowsToHover">
                     {propertyNamesArray.map((propertyName, secondIndex) => (
-                        <td key={keyPrefix + secondIndex}
-                            onClick={event => window.location.href =
+                        <td key={keyPrefix + secondIndex} className="focus-in-expand-fwd"
+                            onClick={() => window.location.href =
                                 window.location.pathname + `/${element.id}`}
                         >{element[propertyName]}</td>
                     ))}

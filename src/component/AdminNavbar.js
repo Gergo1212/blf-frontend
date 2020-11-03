@@ -40,7 +40,7 @@ function AdminNavbar() {
     const listAdminMenuButtons =
         buttons.map((button, index) => (
             <a href={button.link}>
-                <button className={"button"}>{button.name}</button>
+                <button key={index} className={"button roll-in-top"}>{button.name}</button>
             </a>
         ))
 
