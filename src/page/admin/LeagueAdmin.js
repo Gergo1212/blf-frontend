@@ -1,11 +1,12 @@
-import React, {useContext} from "react";
-import {LeagueContext} from "../../context/LeagueContext";
+import React from "react";
 import TableCreator from "../../component/TableCreator";
 import AdminNavbar from "../../component/AdminNavbar";
+import useFetchAllData from "../../api/ApiCallFetch";
 
 function LeagueAdmin() {
 
-    const {leagues} = useContext(LeagueContext);
+    const urlForFetchLeagues = "http://localhost:8762/game/league";
+    const [leagues] = useFetchAllData(urlForFetchLeagues);
 
     return (
         <React.Fragment>

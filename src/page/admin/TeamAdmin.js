@@ -1,12 +1,12 @@
-import React, {useContext} from "react";
+import React from "react";
 import TableCreator from "../../component/TableCreator";
-import {TeamContext} from "../../context/TeamContext";
 import AdminNavbar from "../../component/AdminNavbar";
-
+import useFetchAllData from "../../api/ApiCallFetch";
 
 function TeamAdmin() {
 
-    const {teams} = useContext(TeamContext);
+    const urlForFetchTeams = "http://localhost:8762/game/team";
+    const [teams] = useFetchAllData(urlForFetchTeams);
 
     return (
         <React.Fragment>

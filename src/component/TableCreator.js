@@ -18,7 +18,7 @@ function TableCreator(props) {
         }
     }
 
-    function listElementsFromContext(keyPrefix, contextElements, propertyNamesArray) {
+    function listElementsFromContext(keyPrefix, contextElements, propertyNamesArray, clicker) {
         if (contextElements.length !== 0) {
             return contextElements.map((element, index) => (
                 <tr key={keyPrefix + index} className="rowsToHover">
@@ -29,7 +29,7 @@ function TableCreator(props) {
                         >{element[propertyName]}</td>
                     ))}
                     <td>
-                        <i className={"far fa-trash-alt"}/>
+                        <i className={"far fa-trash-alt"} onClick={clicker}/>
                     </td>
                 </tr>
             ))
