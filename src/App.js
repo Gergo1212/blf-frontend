@@ -13,6 +13,7 @@ import SeasonAdmin from "./page/admin/SeasonAdmin";
 import LeagueAdmin from "./page/admin/LeagueAdmin";
 import TeamAdmin from "./page/admin/TeamAdmin";
 import ElementView from "./page/admin/ElementView";
+import PlayerAdmin from "./page/admin/PlayerAdmin";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                                 <Route exact path={"/admin/season"} component={SeasonAdmin}/>
                                 <Route exact path={"/admin/league"} component={LeagueAdmin}/>
                                 <Route exact path={"/admin/team"} component={TeamAdmin}/>
+                                <Route exact path={"/admin/player"} component={PlayerAdmin}/>
                                 <Route exact path={"/admin/:service/:id"} component={ElementView}/>
                                 <Route exact path={"/"} component={Main}/>
                                 <Route exact path={"/rules"} component={Rules}/>
