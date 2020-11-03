@@ -125,6 +125,7 @@ footer {
 
 table {
     overflow: auto;
+    overflow-x: scroll;
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 5px;
