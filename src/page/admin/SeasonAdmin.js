@@ -1,11 +1,13 @@
-import React, {useContext} from "react";
-import {SeasonContext} from "../../context/SeasonContext";
+import React from "react";
 import TableCreator from "../../component/TableCreator";
 import AdminNavbar from "../../component/AdminNavbar";
+import useFetchAllData from "../../api/ApiCallFetch";
 
 function SeasonAdmin() {
 
-    const {seasons} = useContext(SeasonContext);
+    const urlForFetchSeasons = "http://localhost:8762/game/season";
+
+    const [seasons] = useFetchAllData(urlForFetchSeasons);
 
     /*  const seasonToSend = {
           date: "123456-78910"
