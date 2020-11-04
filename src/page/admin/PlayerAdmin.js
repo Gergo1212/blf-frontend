@@ -20,9 +20,10 @@ function PlayerAdmin() {
         <React.Fragment>
             <div className={"renderDiv"}>
                 <AdminNavbar/>
-                <TableCreator inputObjects ={players} prefix="player"/>
+                <TableCreator inputObjects={players} prefix="player"/>
             </div>
         </React.Fragment>
     )
 }
+
 export default PlayerAdmin;

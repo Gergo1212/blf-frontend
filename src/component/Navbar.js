@@ -128,13 +128,13 @@ function Navbar() {
 
     const buttonCreator =
         navbarButtonNames.map((buttonName, index) => (
-            <div className={"dropDown"}>
-                <button className={"button dropBtn roll-in-top"}>{buttonName}
-                    <i className={"fas fa-caret-down"}/>
+            <div key={index} className={"dropDown"}>
+                <button key={index} className={"button dropBtn roll-in-top"}>{buttonName}
+                    <i key={index} className={"fas fa-caret-down"}/>
                 </button>
                 <div className={"dropDownContent roll-in-top"}>
-                    {categories[index].map((element) => (
-                        <a href={element.link} target="_blank"
+                    {categories[index].map((element, secondIndex) => (
+                        <a key={secondIndex+"a"} href={element.link} target="_blank"
                            rel="noopener noreferrer">{element.name}</a>
                     ))}
                 </div>

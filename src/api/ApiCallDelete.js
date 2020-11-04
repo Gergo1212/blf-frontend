@@ -1,3 +1,4 @@
+/*
 import {useEffect} from "react";
 import axios from "axios";
 
@@ -10,4 +11,4 @@ const useDeleteElement =(url) =>{
     })
 }
 
-export default useDeleteElement;
+export default useDeleteElement;*/

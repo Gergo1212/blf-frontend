@@ -2,7 +2,6 @@ import React from "react";
 import TableCreator from "../../component/TableCreator";
 import AdminNavbar from "../../component/AdminNavbar";
 import useFetchAllData from "../../api/ApiCallFetch";
-import useDeleteElement from "../../api/ApiCallDelete";
 
 function SeasonAdmin() {
 
@@ -19,17 +18,11 @@ function SeasonAdmin() {
               .catch((error) => console.log(error))
       };*/
 
-    const uD = "http://localhost:8762/game/season/delete/13"
-
-
-    const clicker =
-        useDeleteElement(uD);
-
 
     return (
         <React.Fragment>
             <AdminNavbar/>
-            <TableCreator inputObjects={seasons} clicker={clicker} prefix="season"/>
+            <TableCreator inputObjects={seasons} prefix="season"/>
         </React.Fragment>
     )
 }
