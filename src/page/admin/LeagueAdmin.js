@@ -6,7 +6,7 @@ import useFetchAllData from "../../api/ApiCallFetch";
 function LeagueAdmin() {
 
     const urlForFetchLeagues = "http://localhost:8762/game/league";
-    const [leagues] = useFetchAllData(urlForFetchLeagues);
+    const leagues = useFetchAllData(urlForFetchLeagues);
 
     return (
         <React.Fragment>

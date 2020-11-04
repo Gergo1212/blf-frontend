@@ -1,6 +1,8 @@
 import React from "react";
 import {useParams} from "react-router"
 import useFetchAllData from "../../api/ApiCallFetch";
+import TableCreator from "../../component/TableCreator";
+import AdminNavbar from "../../component/AdminNavbar";
 
 function ElementAdmin() {
 
@@ -17,18 +19,11 @@ function ElementAdmin() {
 
     const element = useFetchAllData(urlForElement);
 
-    const getNames = Object.keys(element);
-
-    const createList =
-        getNames.map((name) => (
-            <li>{name} : {element[name]}</li>
-        ))
-
     return (
-
-        <div className={"renderDiv"}>
-            {createList}
-        </div>
+        <React.Fragment>
+            <AdminNavbar/>
+            <TableCreator inputObjects={[element]}/>
+        </React.Fragment>
     )
 
 }
