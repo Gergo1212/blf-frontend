@@ -6,18 +6,9 @@ import useFetchAllData from "../../api/ApiCallFetch";
 function SeasonAdmin() {
 
     const urlForFetchSeasons = "http://localhost:8762/game/season";
-    const [seasons] = useFetchAllData(urlForFetchSeasons);
+    const seasons = useFetchAllData(urlForFetchSeasons);
 
-
-    /*  const seasonToSend = {
-          date: "123456-78910"
-      }
-      const addSeason = () => {
-          axios.post("http://localhost:8762/game/season/add", seasonToSend)
-              .then(response => console.log(response))
-              .catch((error) => console.log(error))
-      };*/
-
+    console.log(seasons);
 
     return (
         <React.Fragment>

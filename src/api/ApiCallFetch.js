@@ -12,6 +12,7 @@ const useFetchAllData = (url) => {
             .catch((error) => console.log(error))
     }, [url])
 
-    return [elements];
+    return elements;
 }
+
 export default useFetchAllData;
