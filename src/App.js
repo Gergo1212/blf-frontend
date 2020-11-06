@@ -27,7 +27,7 @@ function App() {
                     <Route exact path={"/admin/league"} component={LeagueAdmin}/>
                     <Route exact path={"/admin/team"} component={TeamAdmin}/>
                     <Route exact path={"/admin/player"} component={PlayerAdmin}/>
-                    <Route exact path={"/admin/match"} component={MatchAdmin}/>
+                    <Route exact path={"/admin/event"} component={MatchAdmin}/>
                     <Route exact path={"/admin/:service/:id"} component={ElementAdmin}/>
                     <Route exact path={"/"} component={Main}/>
                     <Route exact path={"/rules"} component={Rules}/>
