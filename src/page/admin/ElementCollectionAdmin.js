@@ -10,7 +10,7 @@ function ElementCollectionAdmin() {
 
     let urlForElements;
 
-    if (service === "player") {
+    if (service === "player" || service === "coach") {
         urlForElements = `http://localhost:8762/people/${service}`;
     } else {
         urlForElements = `http://localhost:8762/game/${service}`;
