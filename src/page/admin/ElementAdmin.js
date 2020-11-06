@@ -16,6 +16,13 @@ function ElementAdmin() {
         urlForElement = `http://localhost:8762/game/${service}/${id}`;
     }
 
+    let urlForUpdate;
+    if (service === "player") {
+        urlForUpdate = `http://localhost:8762/people/${service}/edit/${id}`;
+    } else {
+        urlForUpdate = `http://localhost:8762/game/${service}/edit/${id}`;
+    }
+
     const element = CreateRequest(urlForElement, "GET");
 
     const inputFieldCreator =
@@ -28,7 +35,6 @@ function ElementAdmin() {
         ))
 
 
-
     const [inputs, setInputs] = useState({});
 
     function handleChange(event) {
@@ -36,14 +42,8 @@ function ElementAdmin() {
         setInputs({...inputs, [event.target.name]: value});
     }
 
-    let urlForUpdate;
-    if (service === "player") {
-        urlForUpdate = `http://localhost:8762/people/${service}/edit/${id}`;
-    } else {
-        urlForUpdate = `http://localhost:8762/game/${service}/edit/${id}`;
-    }
 
-    function handleClick(){
+    function handleClick() {
         CreateRequest(urlForUpdate, "PUT", inputs);
     }
 

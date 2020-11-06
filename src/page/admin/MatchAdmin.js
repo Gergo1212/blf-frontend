@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import AdminNavbar from "../../component/AdminNavbar";
 import TableCreator from "../../component/TableCreator";
@@ -16,4 +17,4 @@ function MatchAdmin() {
     )
 }
 
-export default MatchAdmin;
+export default MatchAdmin;*/

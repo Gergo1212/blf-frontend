@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import TableCreator from "../../component/TableCreator";
 import AdminNavbar from "../../component/AdminNavbar";
@@ -20,3 +21,4 @@ function SeasonAdmin() {
 }
 
 export default SeasonAdmin;
+*/

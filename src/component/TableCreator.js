@@ -13,7 +13,7 @@ function TableCreator(props) {
     function createTableColumnNames(propertyNamesArray) {
         if (propertyNamesArray.length !== 0) {
             return propertyNamesArray.map((property, index) => (
-                <th key={property+index}>{property}</th>
+                <th key={property + index}>{property}</th>
             ));
         }
     }
@@ -23,7 +23,7 @@ function TableCreator(props) {
             return contextElements.map((element, index) => (
                 <tr key={keyPrefix + index} className="rowsToHover">
                     {propertyNamesArray.map((propertyName, secondIndex) => (
-                        <td key={propertyName+secondIndex}
+                        <td key={propertyName + secondIndex}
                             onClick={() => window.location.href =
                                 window.location.pathname + `/${element.id}`}>
                             <div className="tablediv">{element[propertyName]}</div>

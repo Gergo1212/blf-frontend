@@ -1,3 +1,4 @@
+/*
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import AdminNavbar from "../../component/AdminNavbar";
@@ -26,4 +27,4 @@ function PlayerAdmin() {
     )
 }
 
-export default PlayerAdmin;
+export default PlayerAdmin;*/

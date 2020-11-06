@@ -13,6 +13,7 @@ import ElementAdmin from "./page/admin/ElementAdmin";
 import PlayerAdmin from "./page/admin/PlayerAdmin";
 import MatchAdmin from "./page/admin/MatchAdmin";
 import StatAdmin from "./page/admin/StatAdmin";
+import ElementCollectionAdmin from "./page/admin/ElementCollectionAdmin";
 
 
 function App() {
@@ -24,12 +25,7 @@ function App() {
                 <Navbar/>
                 <Switch>
                     <Route exact path={"/admin"} component={Admin}/>
-                    <Route exact path={"/admin/season"} component={SeasonAdmin}/>
-                    <Route exact path={"/admin/league"} component={LeagueAdmin}/>
-                    <Route exact path={"/admin/team"} component={TeamAdmin}/>
-                    <Route exact path={"/admin/player"} component={PlayerAdmin}/>
-                    <Route exact path={"/admin/event"} component={MatchAdmin}/>
-                    <Route exact path={"/admin/statistic"} component={StatAdmin}/>
+                    <Route exact path={"/admin/:service"} component={ElementCollectionAdmin}/>
                     <Route exact path={"/admin/:service/:id"} component={ElementAdmin}/>
                     <Route exact path={"/"} component={Main}/>
                     <Route exact path={"/rules"} component={Rules}/>
