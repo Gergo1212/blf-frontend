@@ -1,12 +1,12 @@
 import React from "react";
 import TableCreator from "../../component/TableCreator";
 import AdminNavbar from "../../component/AdminNavbar";
-import useFetchAllData from "../../api/ApiCallFetch";
+import useFetchData from "../../api/ApiCallFetch";
 
 function LeagueAdmin() {
 
     const urlForFetchLeagues = "http://localhost:8762/game/league";
-    const leagues = useFetchAllData(urlForFetchLeagues);
+    const leagues = useFetchData(urlForFetchLeagues);
 
     return (
         <React.Fragment>

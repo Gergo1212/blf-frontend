@@ -1,14 +1,13 @@
 import React from "react";
 import TableCreator from "../../component/TableCreator";
 import AdminNavbar from "../../component/AdminNavbar";
-import useFetchAllData from "../../api/ApiCallFetch";
+import useFetchData from "../../api/ApiCallFetch";
 
 function SeasonAdmin() {
 
     const urlForFetchSeasons = "http://localhost:8762/game/season";
-    const seasons = useFetchAllData(urlForFetchSeasons);
+    const seasons = useFetchData(urlForFetchSeasons);
 
-    console.log(seasons);
 
     return (
         <React.Fragment>
