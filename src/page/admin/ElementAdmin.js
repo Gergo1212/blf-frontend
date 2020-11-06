@@ -16,7 +16,9 @@ function ElementAdmin() {
         urlForElement = `http://localhost:8762/game/${service}/${id}`;
     }
 
+
     let urlForUpdate;
+
     if (service === "player") {
         urlForUpdate = `http://localhost:8762/people/${service}/edit/${id}`;
     } else {

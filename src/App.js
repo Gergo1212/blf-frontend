@@ -6,13 +6,7 @@ import Footer from "./component/Footer";
 import Rules from "./page/Rules";
 import Main from "./page/Main";
 import Admin from "./page/admin/Admin";
-import SeasonAdmin from "./page/admin/SeasonAdmin";
-import LeagueAdmin from "./page/admin/LeagueAdmin";
-import TeamAdmin from "./page/admin/TeamAdmin";
 import ElementAdmin from "./page/admin/ElementAdmin";
-import PlayerAdmin from "./page/admin/PlayerAdmin";
-import MatchAdmin from "./page/admin/MatchAdmin";
-import StatAdmin from "./page/admin/StatAdmin";
 import ElementCollectionAdmin from "./page/admin/ElementCollectionAdmin";
 
 
