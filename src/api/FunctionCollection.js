@@ -35,7 +35,7 @@ export function CreateRequest(url, method, data) {
                 break;
 
             default:
-                return "Axios doesn't work!";
+                throw new Error("Axios doesn't work!!");
         }
     }, [url, method, data])
 
