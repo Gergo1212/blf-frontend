@@ -2,8 +2,6 @@ import React, {useState} from "react";
 import {useParams} from "react-router"
 import TableCreator from "../../component/TableCreator";
 import AdminNavbar from "../../component/AdminNavbar";
-import axios from "axios"
-import useFetchData from "../../api/ApiCallFetch";
 import {CreateRequest} from "../../api/FunctionCollection";
 
 function ElementAdmin() {
