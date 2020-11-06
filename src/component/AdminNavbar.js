@@ -33,7 +33,7 @@ function AdminNavbar() {
         },
         {
             name: "Statisztika",
-            link: "/admin/stat"
+            link: "/admin/statistic"
         },
     ]
 
