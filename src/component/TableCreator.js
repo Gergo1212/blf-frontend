@@ -26,7 +26,7 @@ function TableCreator(props) {
                         <td key={propertyName + secondIndex}
                             onClick={() => window.location.href =
                                 window.location.pathname + `/${element.id}`}>
-                            <div className="tablediv">{element[propertyName]}</div>
+                            <div className="tableDiv">{element[propertyName]}</div>
                         </td>
                     ))}
                     <td>
