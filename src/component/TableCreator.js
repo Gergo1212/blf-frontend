@@ -25,8 +25,9 @@ function TableCreator(props) {
                     {propertyNamesArray.map((propertyName, secondIndex) => (
                         <td key={propertyName+secondIndex}
                             onClick={() => window.location.href =
-                                window.location.pathname + `/${element.id}`}
-                        >{element[propertyName]}</td>
+                                window.location.pathname + `/${element.id}`}>
+                            <div className="tablediv">{element[propertyName]}</div>
+                        </td>
                     ))}
                     <td>
                         <i className={"far fa-trash-alt"}/>
