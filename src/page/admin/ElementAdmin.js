@@ -4,6 +4,7 @@ import TableCreator from "../../component/TableCreator";
 import AdminNavbar from "../../component/AdminNavbar";
 import axios from "axios"
 import useFetchData from "../../api/ApiCallFetch";
+import {CreateRequest} from "../../api/FunctionCollection";
 
 function ElementAdmin() {
 
@@ -17,7 +18,7 @@ function ElementAdmin() {
         urlForElement = `http://localhost:8762/game/${service}/${id}`;
     }
 
-    const element = useFetchData(urlForElement);
+    const element = CreateRequest(urlForElement, "GET");
 
     const inputFieldCreator =
         Object.keys(element).map((fieldName) => (
@@ -44,13 +45,9 @@ function ElementAdmin() {
         urlForUpdate = `http://localhost:8762/game/${service}/edit/${id}`;
     }
 
-    function w() {
-        axios
-            .put(urlForUpdate, inputs)
-            .then((r) => console.log(r))
-            .catch((err) => console.log(err))
+    function handleClick(){
+        CreateRequest(urlForUpdate, "PUT", inputs);
     }
-
 
     return (
         <React.Fragment>
@@ -59,7 +56,7 @@ function ElementAdmin() {
             <form style={{color: "white"}}>
                 {inputFieldCreator}
             </form>
-            <button onClick={w.bind(urlForUpdate, inputs)}>Submit</button>
+            <button onClick={handleClick()}>Submit</button>
         </React.Fragment>
     )
 }
