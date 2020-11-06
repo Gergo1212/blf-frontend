@@ -2,7 +2,7 @@ import React from "react";
 import AdminNavbar from "../../component/AdminNavbar";
 import TableCreator from "../../component/TableCreator";
 import {useParams} from "react-router";
-import {CreateRequest} from "../../api/FunctionCollection";
+import {CreateRequest} from "../../function/FunctionCollection";
 
 function ElementCollectionAdmin() {
 
