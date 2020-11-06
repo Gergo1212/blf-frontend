@@ -50,7 +50,7 @@ function TableCreator(props) {
             </tr>
             </thead>
             <tbody>
-            {listElementsFromContext(props.preFix, props.inputObjects, getPropertyNames(props.inputObjects))}
+            {listElementsFromContext(props.prefix, props.inputObjects, getPropertyNames(props.inputObjects))}
             </tbody>
         </table>
     )
