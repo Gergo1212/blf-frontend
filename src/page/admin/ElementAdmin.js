@@ -28,8 +28,8 @@ function ElementAdmin() {
     const element = CreateRequest(urlForElement, "GET");
 
     const inputFieldCreator =
-        Object.keys(element).map((fieldName) => (
-            <div>
+        Object.keys(element).map((fieldName, index) => (
+            <div key={index}>
                 <label>{fieldName}</label>
                 <input type="text" name={fieldName} defaultValue={element[fieldName]}
                        onChange={handleChange}/>
