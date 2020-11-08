@@ -18,7 +18,7 @@ function TableCreator(props) {
         }
     }
 
-    function listElementsFromContext(keyPrefix, contextElements, propertyNamesArray) {
+    function listElementsFromQuery(keyPrefix, contextElements, propertyNamesArray) {
         if (contextElements.length !== 0) {
             return contextElements.map((element, index) => (
                 <tr key={keyPrefix + index} className="rowsToHover">
@@ -50,7 +50,7 @@ function TableCreator(props) {
             </tr>
             </thead>
             <tbody>
-            {listElementsFromContext(props.prefix, props.inputObjects, getPropertyNames(props.inputObjects))}
+            {listElementsFromQuery(props.prefix, props.inputObjects, getPropertyNames(props.inputObjects))}
             </tbody>
         </table>
     )

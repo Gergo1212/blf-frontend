@@ -6,8 +6,8 @@ import Footer from "./component/Footer";
 import Rules from "./page/Rules";
 import Main from "./page/Main";
 import Admin from "./page/admin/Admin";
-import ElementAdmin from "./page/admin/ElementAdmin";
-import ElementCollectionAdmin from "./page/admin/ElementCollectionAdmin";
+import SingleElementAdmin from "./page/admin/SingleElementAdmin";
+import ElementsAdmin from "./page/admin/ElementsAdmin";
 
 
 function App() {
@@ -19,8 +19,8 @@ function App() {
                 <Navbar/>
                 <Switch>
                     <Route exact path={"/admin"} component={Admin}/>
-                    <Route exact path={"/admin/:service"} component={ElementCollectionAdmin}/>
-                    <Route exact path={"/admin/:service/:id"} component={ElementAdmin}/>
+                    <Route exact path={"/admin/:service"} component={ElementsAdmin}/>
+                    <Route exact path={"/admin/:service/:id"} component={SingleElementAdmin}/>
                     <Route exact path={"/"} component={Main}/>
                     <Route exact path={"/rules"} component={Rules}/>
                 </Switch>

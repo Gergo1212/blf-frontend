@@ -4,13 +4,13 @@ import TableCreator from "../../component/TableCreator";
 import AdminNavbar from "../../component/AdminNavbar";
 import {CreateRequest} from "../../function/FunctionCollection";
 
-function ElementAdmin() {
+function SingleElementAdmin() {
 
     const {service, id} = useParams();
 
     let urlForElement;
 
-    if (service === "player") {
+    if (service === "player" || service === "coach") {
         urlForElement = `http://localhost:8762/people/${service}/${id}`;
     } else {
         urlForElement = `http://localhost:8762/game/${service}/${id}`;
@@ -32,20 +32,19 @@ function ElementAdmin() {
             <div key={index}>
                 <label>{fieldName}</label>
                 <input type="text" name={fieldName} defaultValue={element[fieldName]}
-                       onChange={handleChange}/>
+                       onChange={handleInputFieldChange}/>
             </div>
         ))
 
 
     const [inputs, setInputs] = useState({});
 
-    function handleChange(event) {
+    function handleInputFieldChange(event) {
         const value = event.target.value;
         setInputs({...inputs, [event.target.name]: value});
     }
 
-
-    function handleClick() {
+    function handleUpdateClick() {
         CreateRequest(urlForUpdate, "PUT", inputs);
     }
 
@@ -56,9 +55,9 @@ function ElementAdmin() {
             <form style={{color: "white"}}>
                 {inputFieldCreator}
             </form>
-            <button onClick={handleClick()}>Submit</button>
+            <button onClick={handleUpdateClick()}>Submit</button>
         </React.Fragment>
     )
 }
 
-export default ElementAdmin;
+export default SingleElementAdmin;
