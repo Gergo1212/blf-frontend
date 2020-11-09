@@ -14,13 +14,9 @@ function ElementsAdmin() {
 
     if (service === "player" || service === "coach") {
         urlForElements = `http://localhost:8762/people/${service}`;
-    } else {
-        urlForElements = `http://localhost:8762/game/${service}`;
-    }
-
-    if (service === "player" || service === "coach") {
         urlForAddNewElement = `http://localhost:8762/people/${service}/add`;
     } else {
+        urlForElements = `http://localhost:8762/game/${service}`;
         urlForAddNewElement = `http://localhost:8762/game/${service}/add`;
     }
 

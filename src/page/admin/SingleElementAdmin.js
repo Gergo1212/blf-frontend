@@ -6,23 +6,22 @@ import {RequestContext} from "../../context/RequestContext";
 
 function SingleElementAdmin() {
 
-    const {requestPut, requestGet, elements} = useContext(RequestContext)
+    const {requestPut, requestGet, requestDelete, elements} = useContext(RequestContext)
     const {service, id} = useParams();
     const [inputs, setInputs] = useState({});
     let urlForElement;
     let urlForUpdate;
+    let urlForDelete;
 
 
     if (service === "player" || service === "coach") {
         urlForElement = `http://localhost:8762/people/${service}/${id}`;
+        urlForUpdate = `http://localhost:8762/people/${service}/edit/${id}`;
+        urlForDelete = `http://localhost:8762/people/${service}/delete/${id}`;
     } else {
         urlForElement = `http://localhost:8762/game/${service}/${id}`;
-    }
-
-    if (service === "player") {
-        urlForUpdate = `http://localhost:8762/people/${service}/edit/${id}`;
-    } else {
         urlForUpdate = `http://localhost:8762/game/${service}/edit/${id}`;
+        urlForDelete = `http://localhost:8762/game/${service}/delete/${id}`;
     }
 
 
@@ -51,10 +50,11 @@ function SingleElementAdmin() {
         <React.Fragment>
             <AdminNavbar/>
             <TableCreator inputObjects={[elements]}/>
+            <button onClick={()=> requestDelete(urlForDelete)}>{service} törlése</button>
             <form>
                 {inputFieldCreator}
             </form>
-            <button onClick={() => requestPut(urlForUpdate, inputs)}>Submit</button>
+            <button onClick={() => requestPut(urlForUpdate, inputs)}>Módosítás</button>
         </React.Fragment>
     )
 }
