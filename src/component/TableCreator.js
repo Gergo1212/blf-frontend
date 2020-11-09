@@ -29,9 +29,6 @@ function TableCreator(props) {
                             <div className="tableDiv">{element[propertyName]}</div>
                         </td>
                     ))}
-                    <td>
-                        <i className={"far fa-trash-alt"}/>
-                    </td>
                 </tr>
             ))
         }
@@ -46,7 +43,6 @@ function TableCreator(props) {
             <thead>
             <tr>
                 {createTableColumnNames(getPropertyNames(props.inputObjects))}
-                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
