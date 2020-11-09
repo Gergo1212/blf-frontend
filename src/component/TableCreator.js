@@ -18,25 +18,24 @@ function TableCreator(props) {
         }
     }
 
-    function listElementsFromQuery(keyPrefix, contextElements, propertyNamesArray) {
-        if (contextElements.length !== 0) {
-            return contextElements.map((element, index) => (
+    function createTableFromElements(keyPrefix, elementsArray, propertyNamesArray) {
+        if (elementsArray.length > 0) {
+            return elementsArray.map((element, index) => (
                 <tr key={keyPrefix + index} className="rowsToHover">
                     {propertyNamesArray.map((propertyName, secondIndex) => (
                         <td key={propertyName + secondIndex}
                             onClick={() => window.location.href =
                                 window.location.pathname + `/${element.id}`}>
-                            <div className="tableDiv">{element[propertyName]}</div>
+                            <div className="tableDiv">
+                                {typeof element[propertyName] === "object" &&  element[propertyName] !== null ?
+                                    element[propertyName].id : element[propertyName]}
+                            </div>
                         </td>
                     ))}
                 </tr>
             ))
         }
     }
-
-    /*
-    >{typeof element[propertyName] === "object" ? element[propertyName].id: element[propertyName]}</td>
-*/
 
     return (
         <table>
@@ -46,7 +45,7 @@ function TableCreator(props) {
             </tr>
             </thead>
             <tbody>
-            {listElementsFromQuery(props.prefix, props.inputObjects, getPropertyNames(props.inputObjects))}
+            {createTableFromElements(props.prefix, props.inputObjects, getPropertyNames(props.inputObjects))}
             </tbody>
         </table>
     )

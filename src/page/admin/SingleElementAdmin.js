@@ -9,6 +9,7 @@ function SingleElementAdmin() {
     const {requestPut, requestGet, requestDelete, elements} = useContext(RequestContext)
     const {service, id} = useParams();
     const [inputs, setInputs] = useState({});
+
     let urlForElement;
     let urlForUpdate;
     let urlForDelete;
@@ -28,6 +29,7 @@ function SingleElementAdmin() {
     useEffect(() => {
         requestGet(urlForElement);
     }, [urlForElement])
+
 
 
     const handleInputFieldChange = (event) => {
@@ -50,7 +52,7 @@ function SingleElementAdmin() {
         <React.Fragment>
             <AdminNavbar/>
             <TableCreator inputObjects={[elements]}/>
-            <button onClick={()=> requestDelete(urlForDelete)}>{service} törlése</button>
+            <button onClick={() => requestDelete(urlForDelete)}>{service} törlése</button>
             <form>
                 {inputFieldCreator}
             </form>

@@ -9,6 +9,7 @@ function ElementsAdmin() {
     const {requestGet, requestPost, elements} = useContext(RequestContext)
     const {service} = useParams();
     const [inputs, setInputs] = useState({});
+
     let urlForElements;
     let urlForAddNewElement;
 
