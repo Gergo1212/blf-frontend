@@ -27,13 +27,18 @@ function ElementsAdmin() {
 
     useEffect(() => {
         requestGet(urlForElements)
-    }, [requestGet, urlForElements])
+    }, [urlForElements])
 
 
-    const inputFieldCreator = () => {
+    const handleInputFieldChange = (event) => {
+        const value = event.target.value;
+        setInputs({...inputs, [event.target.name]: value});
+    }
 
+    function inputFieldCreator() {
         if (elements.length > 0) {
-            Object.keys(elements[0]).map((fieldName, index) => (
+
+            return Object.keys(elements[0]).map((fieldName, index) => (
                 <div key={index}>
                     <label>{fieldName}</label>
                     <input type="text" name={fieldName} defaultValue={fieldName}
@@ -44,13 +49,6 @@ function ElementsAdmin() {
         }
     }
 
-
-    const handleInputFieldChange = (event) => {
-        const value = event.target.value;
-        setInputs({...inputs, [event.target.name]: value});
-    }
-
-
     return (
         <React.Fragment>
             <AdminNavbar/>
@@ -58,8 +56,8 @@ function ElementsAdmin() {
             <div className={"modal"}>
                 <div className={"modalContent"}>
                     <span className="close">&times;</span>
-                    {inputFieldCreator(elements)}
-                    <button onClick={() => requestPost(urlForAddNewElement)}>Hozzáadás</button>
+                    {inputFieldCreator()}
+                    <button onClick={() => requestPost(urlForAddNewElement, inputs)}>Hozzáadás</button>
                 </div>
             </div>
             <TableCreator inputObjects={elements} prefix="currentElement"/>

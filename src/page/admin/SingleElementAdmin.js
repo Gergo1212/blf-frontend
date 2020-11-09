@@ -28,7 +28,7 @@ function SingleElementAdmin() {
 
     useEffect(() => {
         requestGet(urlForElement);
-    }, [requestGet, urlForElement])
+    }, [urlForElement])
 
 
     const handleInputFieldChange = (event) => {
@@ -37,6 +37,7 @@ function SingleElementAdmin() {
     }
 
     const inputFieldCreator =
+
         Object.keys(elements).map((fieldName, index) => (
             <div key={index}>
                 <label>{fieldName}</label>
@@ -44,6 +45,7 @@ function SingleElementAdmin() {
                        onChange={handleInputFieldChange}/>
             </div>
         ))
+
 
 
     return (
