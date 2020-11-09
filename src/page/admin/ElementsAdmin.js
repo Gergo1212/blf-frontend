@@ -6,7 +6,7 @@ import {RequestContext} from "../../context/RequestContext";
 
 function ElementsAdmin() {
 
-    const {requestGet, requestDelete, requestPost, elements} = useContext(RequestContext)
+    const {requestGet, requestPost, elements} = useContext(RequestContext)
     const {service} = useParams();
     const [inputs, setInputs] = useState({});
     let urlForElements;

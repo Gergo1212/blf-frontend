@@ -47,7 +47,6 @@ function SingleElementAdmin() {
         ))
 
 
-
     return (
         <React.Fragment>
             <AdminNavbar/>
