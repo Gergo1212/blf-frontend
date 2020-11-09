@@ -10,7 +10,6 @@ import SingleElementAdmin from "./page/admin/SingleElementAdmin";
 import ElementsAdmin from "./page/admin/ElementsAdmin";
 import RequestContextProvider from "./context/RequestContext";
 
-
 function App() {
 
     return (

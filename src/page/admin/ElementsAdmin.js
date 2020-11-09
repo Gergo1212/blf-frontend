@@ -35,14 +35,18 @@ function ElementsAdmin() {
     function inputFieldCreator() {
         if (elements.length > 0) {
 
-            return Object.keys(elements[0]).map((fieldName, index) => (
-                <div key={index}>
-                    <label>{fieldName}</label>
-                    <input type="text" name={fieldName} defaultValue={fieldName}
-                           onChange={handleInputFieldChange}
-                    />
-                </div>
-            ))
+            return Object.keys(elements[0]).map((fieldName, index) => {
+
+                if (fieldName !== "id") {
+                    return <div key={index}>
+                        <label>{fieldName}</label>
+                        <input type="text" name={fieldName} defaultValue={fieldName}
+                               onChange={handleInputFieldChange}
+                        />
+                    </div>
+                }
+                return null
+            })
         }
     }
 
@@ -50,13 +54,10 @@ function ElementsAdmin() {
         <React.Fragment>
             <AdminNavbar/>
             <button className={"button openModal"}>Új {service} hozzáadása</button>
-            <div className={"modal"}>
-                <div className={"modalContent"}>
-                    <span className="close">&times;</span>
+                <div className={""}>
                     {inputFieldCreator()}
                     <button onClick={() => requestPost(urlForAddNewElement, inputs)}>Hozzáadás</button>
                 </div>
-            </div>
             <TableCreator inputObjects={elements} prefix="currentElement"/>
         </React.Fragment>
     )

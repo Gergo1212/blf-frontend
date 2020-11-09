@@ -31,7 +31,6 @@ function SingleElementAdmin() {
     }, [urlForElement])
 
 
-
     const handleInputFieldChange = (event) => {
         const value = event.target.value;
         setInputs({...inputs, [event.target.name]: value});
@@ -39,13 +38,18 @@ function SingleElementAdmin() {
 
     const inputFieldCreator =
 
-        Object.keys(elements).map((fieldName, index) => (
-            <div key={index}>
-                <label>{fieldName}</label>
-                <input type="text" name={fieldName} defaultValue={elements[fieldName]}
-                       onChange={handleInputFieldChange}/>
-            </div>
-        ))
+        Object.keys(elements).map((fieldName, index) => {
+                if (fieldName !== "id") {
+
+                    return <div key={index}>
+                        <label>{fieldName}</label>
+                        <input type="text" name={fieldName} defaultValue={elements[fieldName]}
+                               onChange={handleInputFieldChange}/>
+                    </div>
+                }
+                return null;
+            }
+        )
 
 
     return (
