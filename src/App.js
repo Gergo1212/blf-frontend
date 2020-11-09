@@ -8,6 +8,7 @@ import Main from "./page/Main";
 import Admin from "./page/admin/Admin";
 import SingleElementAdmin from "./page/admin/SingleElementAdmin";
 import ElementsAdmin from "./page/admin/ElementsAdmin";
+import RequestContextProvider from "./context/RequestContext";
 
 
 function App() {
@@ -18,11 +19,13 @@ function App() {
                 <Header/>
                 <Navbar/>
                 <Switch>
-                    <Route exact path={"/admin"} component={Admin}/>
-                    <Route exact path={"/admin/:service"} component={ElementsAdmin}/>
-                    <Route exact path={"/admin/:service/:id"} component={SingleElementAdmin}/>
-                    <Route exact path={"/"} component={Main}/>
-                    <Route exact path={"/rules"} component={Rules}/>
+                    <RequestContextProvider>
+                        <Route exact path={"/admin"} component={Admin}/>
+                        <Route exact path={"/admin/:service"} component={ElementsAdmin}/>
+                        <Route exact path={"/admin/:service/:id"} component={SingleElementAdmin}/>
+                        <Route exact path={"/"} component={Main}/>
+                        <Route exact path={"/rules"} component={Rules}/>
+                    </RequestContextProvider>
                 </Switch>
                 <Footer/>
             </Router>

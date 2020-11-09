@@ -1,14 +1,17 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {useParams} from "react-router"
 import TableCreator from "../../component/TableCreator";
 import AdminNavbar from "../../component/AdminNavbar";
-import {CreateRequest} from "../../function/FunctionCollection";
+import {RequestContext} from "../../context/RequestContext";
 
 function SingleElementAdmin() {
 
+    const {requestPut, requestGet, elements} = useContext(RequestContext)
     const {service, id} = useParams();
-
+    const [inputs, setInputs] = useState({});
     let urlForElement;
+    let urlForUpdate;
+
 
     if (service === "player" || service === "coach") {
         urlForElement = `http://localhost:8762/people/${service}/${id}`;
@@ -16,46 +19,41 @@ function SingleElementAdmin() {
         urlForElement = `http://localhost:8762/game/${service}/${id}`;
     }
 
-
-    let urlForUpdate;
-
     if (service === "player") {
         urlForUpdate = `http://localhost:8762/people/${service}/edit/${id}`;
     } else {
         urlForUpdate = `http://localhost:8762/game/${service}/edit/${id}`;
     }
 
-    const element = CreateRequest(urlForElement, "GET");
+
+    useEffect(() => {
+        requestGet(urlForElement);
+    }, [requestGet, urlForElement])
+
+
+    const handleInputFieldChange = (event) => {
+        const value = event.target.value;
+        setInputs({...inputs, [event.target.name]: value});
+    }
 
     const inputFieldCreator =
-        Object.keys(element).map((fieldName, index) => (
+        Object.keys(elements).map((fieldName, index) => (
             <div key={index}>
                 <label>{fieldName}</label>
-                <input type="text" name={fieldName} defaultValue={element[fieldName]}
+                <input type="text" name={fieldName} defaultValue={elements[fieldName]}
                        onChange={handleInputFieldChange}/>
             </div>
         ))
 
 
-    const [inputs, setInputs] = useState({});
-
-    function handleInputFieldChange(event) {
-        const value = event.target.value;
-        setInputs({...inputs, [event.target.name]: value});
-    }
-
-    function handleUpdateClick() {
-        CreateRequest(urlForUpdate, "PUT", inputs);
-    }
-
     return (
         <React.Fragment>
             <AdminNavbar/>
-            <TableCreator inputObjects={[element]}/>
-            <form style={{color: "white"}}>
+            <TableCreator inputObjects={[elements]}/>
+            <form>
                 {inputFieldCreator}
             </form>
-            <button onClick={handleUpdateClick()}>Submit</button>
+            <button onClick={() => requestPut(urlForUpdate, inputs)}>Submit</button>
         </React.Fragment>
     )
 }

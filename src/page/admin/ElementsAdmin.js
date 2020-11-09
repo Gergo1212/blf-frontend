@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useContext, useEffect, useState} from "react";
 import AdminNavbar from "../../component/AdminNavbar";
 import TableCreator from "../../component/TableCreator";
 import {useParams} from "react-router";
-import {CreateRequest} from "../../function/FunctionCollection";
+import {RequestContext} from "../../context/RequestContext";
 
 function ElementsAdmin() {
 
+    const {requestGet, requestDelete, requestPost, elements} = useContext(RequestContext)
     const {service} = useParams();
-
+    const [inputs, setInputs] = useState({});
     let urlForElements;
+    let urlForAddNewElement;
 
     if (service === "player" || service === "coach") {
         urlForElements = `http://localhost:8762/people/${service}`;
@@ -16,30 +18,48 @@ function ElementsAdmin() {
         urlForElements = `http://localhost:8762/game/${service}`;
     }
 
-    const elements = CreateRequest(urlForElements, "GET");
+    if (service === "player" || service === "coach") {
+        urlForAddNewElement = `http://localhost:8762/people/${service}/add`;
+    } else {
+        urlForAddNewElement = `http://localhost:8762/game/${service}/add`;
+    }
 
 
-/*
+    useEffect(() => {
+        requestGet(urlForElements)
+    }, [requestGet, urlForElements])
 
-    const modalInputFieldCreator =
-        Object.keys(elements[0]).map((fieldName, index) =>(
-            <div key={index}>
-                <label>{fieldName}</label>
-                <input type="text" name={fieldName}/>
-            </div>
-        ))
-*/
 
+    const inputFieldCreator = () => {
+
+        if (elements.length > 0) {
+            Object.keys(elements[0]).map((fieldName, index) => (
+                <div key={index}>
+                    <label>{fieldName}</label>
+                    <input type="text" name={fieldName} defaultValue={fieldName}
+                           onChange={handleInputFieldChange}
+                    />
+                </div>
+            ))
+        }
+    }
+
+
+    const handleInputFieldChange = (event) => {
+        const value = event.target.value;
+        setInputs({...inputs, [event.target.name]: value});
+    }
 
 
     return (
         <React.Fragment>
             <AdminNavbar/>
-            <button className={"button"}>Új {service} hozzáadása</button>
+            <button className={"button openModal"}>Új {service} hozzáadása</button>
             <div className={"modal"}>
                 <div className={"modalContent"}>
                     <span className="close">&times;</span>
-                    <button>Hozzáadás</button>
+                    {inputFieldCreator(elements)}
+                    <button onClick={() => requestPost(urlForAddNewElement)}>Hozzáadás</button>
                 </div>
             </div>
             <TableCreator inputObjects={elements} prefix="currentElement"/>
