@@ -41,9 +41,10 @@ function SingleElementAdmin() {
         Object.keys(elements).map((fieldName, index) => {
                 if (fieldName !== "id") {
 
-                    return <div key={index}>
-                        <label>{fieldName}</label>
-                        <input type="text" name={fieldName} defaultValue={elements[fieldName]}
+                    return <div className="inputFieldPairsDiv" key={index}>
+                        <label className="inputFieldTitle">{fieldName}</label>
+                        <input className="inputField" type="text" name={fieldName}
+                               defaultValue={elements[fieldName]}
                                onChange={handleInputFieldChange}/>
                     </div>
                 }
@@ -57,10 +58,14 @@ function SingleElementAdmin() {
             <AdminNavbar/>
             <TableCreator inputObjects={[elements]}/>
             <button onClick={() => requestDelete(urlForDelete)}>{service} törlése</button>
-            <form>
-                {inputFieldCreator}
-            </form>
-            <button onClick={() => requestPut(urlForUpdate, inputs)}>Módosítás</button>
+            <div className="inputContainer">
+                <form className="inputFieldsDiv">
+                    {inputFieldCreator}
+                </form>
+            </div>
+            <button className="inputSubmitButton"
+                    onClick={() => requestPut(urlForUpdate, inputs)}>Módosítás
+            </button>
         </React.Fragment>
     )
 }
