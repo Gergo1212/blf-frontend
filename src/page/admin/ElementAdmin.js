@@ -21,11 +21,12 @@ function ElementAdmin() {
 
     const inputFieldCreator =
         Object.keys(element).map((fieldName) => (
-            <div>
-                <label>{fieldName}</label>
-                <input type="text" name={fieldName} defaultValue={element[fieldName]}
-                       onChange={handleChange}/>
-            </div>
+                <div className="inputFieldPairsDiv">
+                    <label className="inputFieldTitle">{fieldName}</label>
+                    <input className="inputField" type="text" name={fieldName} defaultValue={element[fieldName]}
+                        onChange={handleChange}/>
+                </div>
+
         ))
 
 
@@ -56,10 +57,12 @@ function ElementAdmin() {
         <React.Fragment>
             <AdminNavbar/>
             <TableCreator inputObjects={[element]}/>
-            <form style={{color: "white"}}>
-                {inputFieldCreator}
-            </form>
-            <button onClick={w.bind(urlForUpdate, inputs)}>Submit</button>
+            <div className="inputContainer">
+                <form className="inputFieldsDiv" style={{color: "white"}}>
+                    {inputFieldCreator}
+                </form>
+            </div>
+            <button className="inputSubmitButton" onClick={w.bind(urlForUpdate, inputs)}>Submit</button>
         </React.Fragment>
     )
 }

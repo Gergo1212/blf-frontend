@@ -13,7 +13,7 @@ function AdminNavbar() {
         },
         {
             name: "Meccsek",
-            link: "/admin/match"
+            link: "/admin/event"
         },
         {
             name: "Játékosok",

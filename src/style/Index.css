@@ -167,6 +167,34 @@ table th {
     font-weight: bold;
     text-transform: capitalize;
 }
+.inputContainer{
+    margin:auto;
+    width: 90%;
+    padding-top: 3%;
+
+}
+
+.inputFieldsDiv{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 5%;
+    margin-bottom: 5%;
+}
+
+
+.inputFieldTitle {
+    color: #ffc105;
+}
+.inputField{
+    background-color: #ffc105;
+    text-align: center;
+}
+
+.inputSubmitButton{
+    margin-left: 5%;
+    margin-bottom: 1%;
+    background-color: #ffc105;
+}
 
 .videoTag {
     position: relative;
