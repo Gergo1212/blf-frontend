@@ -28,7 +28,7 @@ function TableCreator(props) {
                                 window.location.pathname + `/${element.id}`}>
                             <div className="tableDiv">
                                 {typeof element[propertyName] === "object" &&  element[propertyName] !== null ?
-                                    element[propertyName].id : element[propertyName]}
+                                    element[propertyName].name : element[propertyName]}
                             </div>
                         </td>
                     ))}

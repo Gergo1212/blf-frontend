@@ -23,7 +23,7 @@ function ElementsAdmin() {
 
 
     useEffect(() => {
-        requestGet(`http://localhost:8762/people/player/paginated`)
+        requestGet(urlForElements)
     }, [urlForElements])
 
 
