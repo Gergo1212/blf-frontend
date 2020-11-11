@@ -13,7 +13,7 @@ function RequestContextProvider(props) {
         axios
             .get(url)
             .then((response) => {
-                setElements(response.data);
+                setElements(response.data.content);
                 setPages(response.data.totalPages)
             })
             .catch((error) => console.log(error))
