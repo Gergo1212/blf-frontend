@@ -6,7 +6,7 @@ import {RequestContext} from "../../context/RequestContext";
 
 function ElementsAdmin() {
 
-    const {requestGet, requestPost, elements} = useContext(RequestContext)
+    const {requestGet, requestPost, elements, pages} = useContext(RequestContext)
     const {service} = useParams();
     const [inputs, setInputs] = useState({});
 
@@ -23,7 +23,7 @@ function ElementsAdmin() {
 
 
     useEffect(() => {
-        requestGet(urlForElements)
+        requestGet(`http://localhost:8762/people/player/paginated`)
     }, [urlForElements])
 
 
