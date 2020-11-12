@@ -1,5 +1,5 @@
 import React from "react";
-import clip from "./admin/BLFWebsiteBackgroundVideo.mp4"
+import clip from "../static/BLFWebsiteBackgroundVideo.mp4"
 
 function Main() {
 
