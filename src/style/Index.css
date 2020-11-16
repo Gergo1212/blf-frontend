@@ -259,7 +259,7 @@ table th {
         opacity: 1;
     }
 }
-@keyframes focus-in-expand-fwd {
+/*@keyframes focus-in-expand-fwd {
     0% {
         letter-spacing: -0.5em;
         -webkit-transform: translateZ(-800px);
@@ -275,7 +275,7 @@ table th {
         filter: blur(0);
         opacity: 1;
     }
-}
+}*/
 
 
 
