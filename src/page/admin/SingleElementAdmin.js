@@ -10,20 +10,9 @@ function SingleElementAdmin() {
     const {service, id} = useParams();
     const [inputs, setInputs] = useState({});
 
-    let urlForElement;
-    let urlForUpdate;
-    let urlForDelete;
-
-
-    if (service === "player" || service === "coach") {
-        urlForElement = `http://localhost:8762/people/${service}/${id}`;
-        urlForUpdate = `http://localhost:8762/people/${service}/edit/${id}`;
-        urlForDelete = `http://localhost:8762/people/${service}/delete/${id}`;
-    } else {
-        urlForElement = `http://localhost:8762/game/${service}/${id}`;
-        urlForUpdate = `http://localhost:8762/game/${service}/edit/${id}`;
-        urlForDelete = `http://localhost:8762/game/${service}/delete/${id}`;
-    }
+    let urlForElement = `http://localhost:8091/${service}/${id}`;
+    let urlForUpdate = `http://localhost:8091/${service}/edit/${id}`;
+    let urlForDelete = `http://localhost:8091/${service}/delete/${id}`;
 
 
     useEffect(() => {

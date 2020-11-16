@@ -10,16 +10,8 @@ function ElementsAdmin() {
     const {service} = useParams();
     const [inputs, setInputs] = useState({});
 
-    let urlForElements;
-    let urlForAddNewElement;
-
-    if (service === "player" || service === "coach") {
-        urlForElements = `http://localhost:8762/people/${service}`;
-        urlForAddNewElement = `http://localhost:8762/people/${service}/add`;
-    } else {
-        urlForElements = `http://localhost:8762/game/${service}`;
-        urlForAddNewElement = `http://localhost:8762/game/${service}/add`;
-    }
+    let urlForElements = `http://localhost:8091/${service}`;
+    let urlForAddNewElement = `http://localhost:8091/${service}/add`;
 
 
     useEffect(() => {
