@@ -13,8 +13,9 @@ function SeasonContextProvider(props) {
             .get("http://localhost:8091/season")
             .then((response) => setSeasons(response.data))
             .catch((error) => console.log(error))
-    })
+    },[])
 
+    console.log(seasons)
     return (
         <SeasonContext.Provider value={{seasons}}>
             {props.children}
