@@ -1,7 +1,7 @@
 import React, {createContext, useState} from "react";
 import axios from "axios";
 
-export const RequestContext = createContext();
+export const RequestContext = createContext([]);
 
 function RequestContextProvider(props) {
 

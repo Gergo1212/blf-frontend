@@ -3,10 +3,12 @@ import AdminNavbar from "../../component/AdminNavbar";
 import TableCreator from "../../component/TableCreator";
 import {useParams} from "react-router";
 import {RequestContext} from "../../context/RequestContext";
+import {SeasonContext} from "../../context/SeasonContext";
 
 function ElementsAdmin() {
 
-    const {requestGet, requestPost, elements, pages} = useContext(RequestContext)
+    const {requestGet, requestPost, elements, pages} = useContext(RequestContext);
+    const {seasons} = useContext(SeasonContext);
     const {service} = useParams();
     const [inputs, setInputs] = useState({});
 
@@ -43,6 +45,11 @@ function ElementsAdmin() {
         }
     }
 
+    const seasonDropDown =
+        seasons.map((season, index) => (
+            <option key={index}>{season.name}</option>
+        ))
+
     return (
         <React.Fragment>
             <AdminNavbar/>
@@ -55,7 +62,17 @@ function ElementsAdmin() {
                         onClick={() => requestPost(urlForAddNewElement, inputs)}>
                     Hozzáadás
                 </button>
+
+                (//TODO looking a better solution as this might be clumsy!!!!)
             </div>
+            {service !== "season" ?
+                <div>
+                    <label style={{color: "white"}}>Válassz egy szezont: </label>
+                    <select>
+                        {seasonDropDown}
+                    </select>
+                </div> : null
+            }
             <TableCreator inputObjects={elements} prefix="currentElement"/>
         </React.Fragment>
     )

@@ -9,6 +9,7 @@ import Admin from "./page/admin/Admin";
 import SingleElementAdmin from "./page/admin/SingleElementAdmin";
 import ElementsAdmin from "./page/admin/ElementsAdmin";
 import RequestContextProvider from "./context/RequestContext";
+import SeasonContextProvider from "./context/SeasonContext";
 
 function App() {
 
@@ -18,13 +19,15 @@ function App() {
                 <Header/>
                 <Navbar/>
                 <Switch>
-                    <RequestContextProvider>
-                        <Route exact path={"/admin"} component={Admin}/>
-                        <Route exact path={"/admin/:service"} component={ElementsAdmin}/>
-                        <Route exact path={"/admin/:service/:id"} component={SingleElementAdmin}/>
-                        <Route exact path={"/"} component={Main}/>
-                        <Route exact path={"/rules"} component={Rules}/>
-                    </RequestContextProvider>
+                    <SeasonContextProvider>
+                        <RequestContextProvider>
+                            <Route exact path={"/admin"} component={Admin}/>
+                            <Route exact path={"/admin/:service"} component={ElementsAdmin}/>
+                            <Route exact path={"/admin/:service/:id"} component={SingleElementAdmin}/>
+                            <Route exact path={"/"} component={Main}/>
+                            <Route exact path={"/rules"} component={Rules}/>
+                        </RequestContextProvider>
+                    </SeasonContextProvider>
                 </Switch>
                 <Footer/>
             </Router>
