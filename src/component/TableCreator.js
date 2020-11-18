@@ -27,7 +27,7 @@ function TableCreator(props) {
                             onClick={() => window.location.href =
                                 window.location.pathname + `/${element.id}`}>
                             <div className="tableDiv">
-                                {typeof element[propertyName] === "object" &&  element[propertyName] !== null ?
+                                {typeof element[propertyName] === "object" && element[propertyName] !== null ?
                                     element[propertyName].name : element[propertyName]}
                             </div>
                         </td>

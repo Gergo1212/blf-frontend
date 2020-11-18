@@ -61,8 +61,7 @@ function ElementsAdmin() {
 
     const handleSearchFieldChange = (event) => {
         event.preventDefault();
-        requestPostSearch(urlForSearch, {"name" : event.target.value});
-        console.log(event.target.value)
+        requestPostSearch(urlForSearch, {"name": event.target.value});
     }
 
 
@@ -79,7 +78,7 @@ function ElementsAdmin() {
                     Hozzáadás
                 </button>
 
-                (//TODO looking a better solution as this might be clumsy!!!!)
+                (//TODO looking for a better solution as this might be clumsy!!!!)
             </div>
             {service !== "season" ?
                 <div>
