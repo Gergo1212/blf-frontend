@@ -7,14 +7,15 @@ import {SeasonContext} from "../../context/SeasonContext";
 
 function ElementsAdmin() {
 
-    const {requestGet, requestPost, elements, pages} = useContext(RequestContext);
+    const {requestGet, requestPost, requestPostSearch, elements, pages} = useContext(RequestContext);
     const {seasons} = useContext(SeasonContext);
     const {service} = useParams();
     const [inputs, setInputs] = useState({});
 
     let urlForElements = `http://localhost:8091/${service}`;
     let urlForAddNewElement = `http://localhost:8091/${service}/add`;
-
+    let urlForElementBySeason = `http://localhost:8091/${service}/season/`;
+    let urlForSearch = `http://localhost:8091/${service}/name`;
 
     useEffect(() => {
         requestGet(urlForElements)
@@ -45,10 +46,25 @@ function ElementsAdmin() {
         }
     }
 
+    const dropDownHandler = (event) => {
+        event.preventDefault()
+        let getId = event.target.children[event.target.selectedIndex].dataset.id;
+        requestGet(urlForElementBySeason + getId);
+        // console.log(event.target.children[event.target.selectedIndex].dataset.id)
+    }
+
+
     const seasonDropDown =
         seasons.map((season, index) => (
-            <option key={index}>{season.name}</option>
+            <option key={index} data-id={season.id}>{season.name}</option>
         ))
+
+    const handleSearchFieldChange = (event) => {
+        event.preventDefault();
+        requestPostSearch(urlForSearch, {"name" : event.target.value});
+        console.log(event.target.value)
+    }
+
 
     return (
         <React.Fragment>
@@ -58,7 +74,7 @@ function ElementsAdmin() {
                 <form className="inputFieldsDiv">
                     {inputFieldCreator()}
                 </form>
-                <button className="inputSubmitButton"
+                <button className={"inputSubmitButton"}
                         onClick={() => requestPost(urlForAddNewElement, inputs)}>
                     Hozzáadás
                 </button>
@@ -68,11 +84,14 @@ function ElementsAdmin() {
             {service !== "season" ?
                 <div>
                     <label style={{color: "white"}}>Válassz egy szezont: </label>
-                    <select>
+                    <select onChange={dropDownHandler}>
                         {seasonDropDown}
                     </select>
                 </div> : null
             }
+            <div>
+                <input type="text" onChange={handleSearchFieldChange} placeholder="Keresés"/>
+            </div>
             <TableCreator inputObjects={elements} prefix="currentElement"/>
         </React.Fragment>
     )
