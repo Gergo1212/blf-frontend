@@ -17,8 +17,7 @@ function SingleElementAdmin() {
 
     useEffect(() => {
         requestGet(urlForElement);
-    }, [urlForElement])
-
+    }, [])
 
     const handleInputFieldChange = (event) => {
         const value = event.target.value;
@@ -26,23 +25,21 @@ function SingleElementAdmin() {
     }
 
     const inputFieldCreator =
+        Object.keys(elements).map((fieldName, index) => (
 
-        Object.keys(elements).map((fieldName, index) => {
-                if (fieldName !== "id") {
-
-                    return <div className="inputFieldPairsDiv" key={index}>
+                fieldName !== "id" ?
+                    <div className="inputFieldPairsDiv" key={index}>
                         <label className="inputFieldTitle">{fieldName}</label>
                         <input className="inputField" type="text" name={fieldName}
                                defaultValue={elements[fieldName]}
                                onChange={handleInputFieldChange}/>
-                    </div>
-                }
-                return null;
-            }
+                    </div> : null
+            )
         )
 
 
     return (
+
         <React.Fragment>
             <AdminNavbar/>
             <TableCreator inputObjects={[elements]}/>

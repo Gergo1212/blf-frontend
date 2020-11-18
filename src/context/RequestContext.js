@@ -12,9 +12,7 @@ function RequestContextProvider(props) {
     const requestGet = (url) => {
         axios
             .get(url)
-            .then((response) => {
-                setElements(response.data);
-            })
+            .then((response) => setElements(response.data))
             .catch((error) => console.log(error))
     }
 
@@ -43,9 +41,11 @@ function RequestContextProvider(props) {
             .catch((error) => console.log(error))
     }
 
+
     return (
-        <RequestContext.Provider value={{requestPut, requestGet, requestPost,
-            requestPostSearch, requestDelete, elements, pages}}>
+        <RequestContext.Provider value={{
+            requestPut, requestGet, requestPost, requestPostSearch, requestDelete, elements, pages
+        }}>
             {props.children}
         </RequestContext.Provider>
     )

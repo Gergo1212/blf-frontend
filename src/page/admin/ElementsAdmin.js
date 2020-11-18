@@ -19,8 +19,7 @@ function ElementsAdmin() {
 
     useEffect(() => {
         requestGet(urlForElements)
-    }, [urlForElements])
-
+    }, [])
 
     const handleInputFieldChange = (event) => {
         const value = event.target.value;
@@ -28,21 +27,20 @@ function ElementsAdmin() {
     }
 
     function inputFieldCreator() {
+
         if (elements.length > 0) {
 
-            return Object.keys(elements[0]).map((fieldName, index) => {
+            return Object.keys(elements[0]).map((fieldName, index) => (
+                fieldName !== "id" ?
 
-                if (fieldName !== "id") {
-                    return <div className="inputFieldPairsDiv" key={index}>
+                    <div className="inputFieldPairsDiv" key={index}>
                         <label className="inputFieldTitle">{fieldName}</label>
                         <input className="inputField" type="text" name={fieldName}
                                defaultValue={fieldName}
                                onChange={handleInputFieldChange}
                         />
-                    </div>
-                }
-                return null
-            })
+                    </div> : null
+            ))
         }
     }
 
@@ -53,16 +51,15 @@ function ElementsAdmin() {
         // console.log(event.target.children[event.target.selectedIndex].dataset.id)
     }
 
-
-    const seasonDropDown =
-        seasons.map((season, index) => (
-            <option key={index} data-id={season.id}>{season.name}</option>
-        ))
-
     const handleSearchFieldChange = (event) => {
         event.preventDefault();
         requestPostSearch(urlForSearch, {"name": event.target.value});
     }
+
+    const seasonsDropDown =
+        seasons.map((season, index) => (
+            <option key={index} data-id={season.id}>{season.name}</option>
+        ))
 
 
     return (
@@ -77,14 +74,15 @@ function ElementsAdmin() {
                         onClick={() => requestPost(urlForAddNewElement, inputs)}>
                     Hozzáadás
                 </button>
-
-                (//TODO looking for a better solution as this might be clumsy!!!!)
             </div>
+
+            (//TODO looking for a better solution as this might be clumsy!!!!)
+
             {service !== "season" ?
                 <div>
                     <label style={{color: "white"}}>Válassz egy szezont: </label>
                     <select onChange={dropDownHandler}>
-                        {seasonDropDown}
+                        {seasonsDropDown}
                     </select>
                 </div> : null
             }
