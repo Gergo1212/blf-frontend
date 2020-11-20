@@ -11,11 +11,11 @@ function ElementsAdmin() {
     const {seasons} = useContext(SeasonContext);
     const {service} = useParams();
     const [inputs, setInputs] = useState({});
+    const [seasonId, setSeasonId] = useState(null);
 
     let urlForElements = `http://localhost:8091/${service}`;
     let urlForAddNewElement = `http://localhost:8091/${service}/add`;
-    let urlForElementBySeason = `http://localhost:8091/${service}/season/`;
-    let urlForSearch = `http://localhost:8091/${service}/name`;
+    let urlForSearchBySeasonAndInput = `http://localhost:8091/${service}/search/`;
 
     useEffect(() => {
         requestGet(urlForElements)
@@ -46,14 +46,18 @@ function ElementsAdmin() {
 
     const dropDownHandler = (event) => {
         event.preventDefault()
-        let getId = event.target.children[event.target.selectedIndex].dataset.id;
-        requestGet(urlForElementBySeason + getId);
-        // console.log(event.target.children[event.target.selectedIndex].dataset.id)
+        let getId = Number(event.target.children[event.target.selectedIndex].dataset.id);
+
+        setSeasonId(getId);
+        requestPostSearch(urlForSearchBySeasonAndInput + getId);
     }
 
     const handleSearchFieldChange = (event) => {
         event.preventDefault();
-        requestPostSearch(urlForSearch, {"name": event.target.value});
+        let objectFromFieldValue = {"input": event.target.value};
+
+        seasonId !== null ? requestPostSearch(urlForSearchBySeasonAndInput + seasonId, objectFromFieldValue)
+            : requestPostSearch(urlForSearchBySeasonAndInput, objectFromFieldValue);
     }
 
     const seasonsDropDown =
