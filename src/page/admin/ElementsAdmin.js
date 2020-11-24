@@ -65,7 +65,6 @@ function ElementsAdmin() {
             <option key={index} data-id={season.id}>{season.name}</option>
         ))
 
-
     return (
         <React.Fragment>
             <AdminNavbar/>

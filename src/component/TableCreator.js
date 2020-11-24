@@ -1,6 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
+import {RequestContext} from "../context/RequestContext";
 
 function TableCreator(props) {
+
+    const {sorter} = useContext(RequestContext);
+
 
     function getPropertyNames(objectArray) {
         if (objectArray.length !== 0) {
@@ -13,7 +17,10 @@ function TableCreator(props) {
     function createTableColumnNames(propertyNamesArray) {
         if (propertyNamesArray.length !== 0) {
             return propertyNamesArray.map((property, index) => (
-                <th key={property + index}>{property}</th>
+                <th key={property + index}>{property}
+                    <i onClick={(event)=>sorter(event)} data-sort="ascending" className="fas fa-sort-up"/>
+                    <i onClick={(event)=>sorter(event)} data-sort="descending" className="fas fa-sort-down"/>
+                </th>
             ));
         }
     }
