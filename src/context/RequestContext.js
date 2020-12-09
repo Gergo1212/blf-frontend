@@ -42,7 +42,8 @@ function RequestContextProvider(props) {
     }
 
     const sorter = (event) => {
-        let parentValue = event.currentTarget.parentNode.innerText;
+
+        let parentValue = event.currentTarget.parentNode.textContent.toString();
         let elementDataset = event.target.dataset.sort;
 
         if (elementDataset === "ascending") {
@@ -50,9 +51,8 @@ function RequestContextProvider(props) {
                 .sort((a, b) => (a[parentValue] > b[parentValue] ? 1 : -1)));
         } else {
             setElements([...elements]
-                .sort((a, b) => (a[parentValue] < b[parentValue] ? 1 : -1)));
+                .sort((a, b) => (a[parentValue]< b[parentValue] ? 1 : -1)));
         }
-
     }
 
     return (

@@ -36,8 +36,7 @@ function SingleElementAdmin() {
                     </div> : null
             )
         )
-
-
+    
     return (
 
         <React.Fragment>
