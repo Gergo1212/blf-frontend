@@ -11,8 +11,8 @@ function SingleElementAdmin() {
     const [inputs, setInputs] = useState({});
 
     let urlForElement = `http://localhost:8091/${service}/${id}`;
-    let urlForUpdate = `http://localhost:8091/${service}/edit/${id}`;
-    let urlForDelete = `http://localhost:8091/${service}/delete/${id}`;
+    let urlForUpdate = `http://localhost:8091/${service}/${id}`;
+    let urlForDelete = `http://localhost:8091/${service}/${id}`;
 
 
     useEffect(() => {

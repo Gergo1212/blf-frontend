@@ -14,7 +14,7 @@ function ElementsAdmin() {
     const [seasonId, setSeasonId] = useState(null);
 
     let urlForElements = `http://localhost:8091/${service}`;
-    let urlForAddNewElement = `http://localhost:8091/${service}/add`;
+    let urlForAddNewElement = `http://localhost:8091/${service}`;
     let urlForSearchBySeasonAndInput = `http://localhost:8091/${service}/search/`;
 
     useEffect(() => {
