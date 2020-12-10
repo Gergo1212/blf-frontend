@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {useParams} from "react-router"
 import TableCreator from "../../component/TableCreator";
+import TableCreatorV2 from "../../component/TableCreatorV2";
 import AdminNavbar from "../../component/AdminNavbar";
 import {RequestContext} from "../../context/RequestContext";
 
@@ -42,7 +43,7 @@ function SingleElementAdmin() {
 
         <React.Fragment>
             <AdminNavbar/>
-            <TableCreator inputObjects={[elements]}/>
+            <TableCreatorV2 inputObjects={[elements]}/>
             <button onClick={() => requestDelete(urlForDelete)}>{service} törlése</button>
             <div className="inputContainer">
                 <form className="inputFieldsDiv">

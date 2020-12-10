@@ -1,7 +1,6 @@
 html{
 background-color: black;
 }
-
 .button {
     background-color: rgb(255 193 5);
     border: none;
@@ -155,7 +154,6 @@ table tr:nth-child(even) {
 .rowsToHover:hover {
     background-color: #ffda01;
     cursor: pointer;
-    transform: scale(1.02);
 
 }
 

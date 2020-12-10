@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import AdminNavbar from "../../component/AdminNavbar";
 import TableCreator from "../../component/TableCreator";
+import TableCreatorV2 from "../../component/TableCreatorV2";
 import {useParams} from "react-router";
 import {RequestContext} from "../../context/RequestContext";
 import {SeasonContext} from "../../context/SeasonContext";
@@ -92,7 +93,7 @@ function ElementsAdmin() {
             <div>
                 <input type="text" onChange={handleSearchFieldChange} placeholder="Keresés"/>
             </div>
-            <TableCreator inputObjects={elements} prefix="currentElement"/>
+            <TableCreatorV2 inputObjects={elements} prefix="currentElement"/>
         </React.Fragment>
     )
 }
