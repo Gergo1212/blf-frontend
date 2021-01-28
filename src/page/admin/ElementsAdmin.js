@@ -4,6 +4,7 @@ import TableCreator from "../../component/TableCreator";
 import {useParams} from "react-router";
 import {RequestContext} from "../../context/RequestContext";
 import {SeasonContext} from "../../context/SeasonContext";
+import SeasonAdmin from "./SeasonAdmin";
 
 function ElementsAdmin() {
 
@@ -15,6 +16,7 @@ function ElementsAdmin() {
 
     let urlForElements = `http://localhost:8091/${service}`;
     let urlForSearchBySeasonAndInput = urlForElements + `/search/`;
+
 
     useEffect(() => {
         requestGet(urlForElements)
@@ -68,36 +70,35 @@ function ElementsAdmin() {
             <option key={index} data-id={season.id}>{season.name}</option>
         ))
 
-    return (
-        <React.Fragment>
-            <AdminNavbar/>
-            <button className={"button"}>Új {service} hozzáadása</button>
-            <div className="inputContainer">
-                <form className="inputFieldsDiv">
-                    {inputFieldCreator()}
-                </form>
-                <button className={"inputSubmitButton"}
-                        onClick={() => requestPost(urlForElements, inputs)}>
-                    Hozzáadás
-                </button>
-            </div>
 
-            (//TODO looking for a better solution as this might be clumsy!!!!)
 
-            {service !== "season" ?
+    if (service === "season") {
+        return (
+            <SeasonAdmin/>
+        )
+
+    } else {
+
+        return (
+            <React.Fragment>
+                <AdminNavbar/>
+                <div className="inputContainer">
+                    <form className="inputFieldsDiv">{inputFieldCreator()}</form>
+                    <button className={"inputSubmitButton"}
+                            onClick={() => requestPost(urlForElements, inputs)}>Hozzáadás
+                    </button>
+                </div>
                 <div>
                     <label style={{color: "white"}}>Válassz egy szezont: </label>
-                    <select onChange={dropDownHandler}>
-                        {seasonsDropDown}
-                    </select>
-                </div> : null
-            }
-            <div>
-                <input type="text" onChange={handleSearchFieldChange} placeholder="Keresés"/>
-            </div>
-            <TableCreator inputObjects={elements} prefix="currentElement"/>
-        </React.Fragment>
-    )
+                    <select onChange={dropDownHandler}>{seasonsDropDown}</select>
+                </div>
+                <div>
+                    <input type="text" onChange={handleSearchFieldChange} placeholder="Keresés"/>
+                </div>
+                <TableCreator inputObjects={elements} prefix="currentElement"/>
+            </React.Fragment>
+        )
+    }
 }
 
 export default ElementsAdmin;

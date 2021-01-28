@@ -34,7 +34,7 @@ function SingleElementAdmin() {
                     </div> : null
             )
         )
-    
+
     return (
 
         <React.Fragment>
@@ -42,9 +42,7 @@ function SingleElementAdmin() {
             <TableCreator inputObjects={[elements]}/>
             <button onClick={() => requestDelete(urlOfElement)}>{service} törlése</button>
             <div className="inputContainer">
-                <form className="inputFieldsDiv">
-                    {inputFieldCreator}
-                </form>
+                <form className="inputFieldsDiv">{inputFieldCreator}</form>
             </div>
             <button className="inputSubmitButton"
                     onClick={() => requestPut(urlOfElement, inputs)}>Módosítás

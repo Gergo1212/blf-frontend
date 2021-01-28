@@ -7,19 +7,16 @@ function TableCreator(props) {
 
 
     function getPropertyNames(objectArray) {
-        if (objectArray.length !== 0) {
-            return Object.keys(objectArray[0]);
-        } else {
-            return [];
-        }
+        let length = objectArray.length;
+        return length > 0 ? Object.keys(objectArray[0]) : [];
     }
 
     function createTableColumnNames(propertyNamesArray) {
-        if (propertyNamesArray.length !== 0) {
-            return propertyNamesArray.map((property, index) => (
-                <th key={property + index}>{property}
-                    <i onClick={(event)=>sorter(event)} data-sort="ascending" className="fas fa-sort-up"/>
-                    <i onClick={(event)=>sorter(event)} data-sort="descending" className="fas fa-sort-down"/>
+        if (propertyNamesArray.length > 0) {
+            return propertyNamesArray.map((name, index) => (
+                <th key={name + index}>{name}
+                    <i onClick={(event) => sorter(event)} data-sort="ascending" className="fas fa-sort-up"/>
+                    <i onClick={(event) => sorter(event)} data-sort="descending" className="fas fa-sort-down"/>
                 </th>
             ));
         }
@@ -31,9 +28,11 @@ function TableCreator(props) {
                 <tr key={keyPrefix + index} className="rowsToHover">
                     {propertyNamesArray.map((propertyName, secondIndex) => (
                         <td key={propertyName + secondIndex}
-                            onClick={() => window.location.href =
-                                window.location.pathname + `/${element.id}`}>
+                            onClick={() => window.location.href = window.location.pathname + `/${element.id}`}>
                             <div className="tableDiv">
+
+                                //TODO convert entities to DTO and don't need these two lines anymore!!!!
+
                                 {typeof element[propertyName] === "object" && element[propertyName] !== null ?
                                     element[propertyName].name : element[propertyName]}
                             </div>
