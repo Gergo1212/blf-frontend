@@ -10,13 +10,11 @@ function SingleElementAdmin() {
     const {service, id} = useParams();
     const [inputs, setInputs] = useState({});
 
-    let urlForElement = `http://localhost:8091/${service}/${id}`;
-    let urlForUpdate = `http://localhost:8091/${service}/${id}`;
-    let urlForDelete = `http://localhost:8091/${service}/${id}`;
+    let urlOfElement = `http://localhost:8091/${service}/${id}`;
 
 
     useEffect(() => {
-        requestGet(urlForElement);
+        requestGet(urlOfElement);
     }, [])
 
     const handleInputFieldChange = (event) => {
@@ -42,14 +40,14 @@ function SingleElementAdmin() {
         <React.Fragment>
             <AdminNavbar/>
             <TableCreator inputObjects={[elements]}/>
-            <button onClick={() => requestDelete(urlForDelete)}>{service} törlése</button>
+            <button onClick={() => requestDelete(urlOfElement)}>{service} törlése</button>
             <div className="inputContainer">
                 <form className="inputFieldsDiv">
                     {inputFieldCreator}
                 </form>
             </div>
             <button className="inputSubmitButton"
-                    onClick={() => requestPut(urlForUpdate, inputs)}>Módosítás
+                    onClick={() => requestPut(urlOfElement, inputs)}>Módosítás
             </button>
         </React.Fragment>
     )

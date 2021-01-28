@@ -6,7 +6,6 @@ export const RequestContext = createContext([]);
 function RequestContextProvider(props) {
 
     const [elements, setElements] = useState([]);
-    const [pages, setPages] = useState([]);
 
 
     const requestGet = (url) => {
@@ -19,7 +18,15 @@ function RequestContextProvider(props) {
     const requestPut = (url, data) => {
         axios
             .put(url, data)
+            .then(() => requestGet(url))
             .catch((error) => console.log(error))
+    }
+
+    const requestPost = (url, data) => {
+        axios
+            .post(url, data)
+            .then(() => requestGet(url))
+            .catch((error) => console.log(error));
     }
 
     const requestPostSearch = (url, data) => {
@@ -29,15 +36,10 @@ function RequestContextProvider(props) {
             .catch((error) => console.log(error));
     }
 
-    const requestPost = (url, data) => {
-        axios
-            .post(url, data)
-            .catch((error) => console.log(error));
-    }
-
     const requestDelete = (url) => {
         axios
             .delete(url)
+            .then(() => requestGet(url))
             .catch((error) => console.log(error))
     }
 
@@ -51,14 +53,14 @@ function RequestContextProvider(props) {
                 .sort((a, b) => (a[parentValue] > b[parentValue] ? 1 : -1)));
         } else {
             setElements([...elements]
-                .sort((a, b) => (a[parentValue]< b[parentValue] ? 1 : -1)));
+                .sort((a, b) => (a[parentValue] < b[parentValue] ? 1 : -1)));
         }
     }
 
     return (
         <RequestContext.Provider value={{
             requestPut, requestGet, requestPost, requestPostSearch, requestDelete, sorter,
-            elements, pages
+            elements
         }}>
             {props.children}
         </RequestContext.Provider>

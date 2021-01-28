@@ -7,15 +7,14 @@ import {SeasonContext} from "../../context/SeasonContext";
 
 function ElementsAdmin() {
 
-    const {requestGet, requestPost, requestPostSearch, elements, pages} = useContext(RequestContext);
+    const {requestGet, requestPost, requestPostSearch, elements} = useContext(RequestContext);
     const {seasons} = useContext(SeasonContext);
     const {service} = useParams();
     const [inputs, setInputs] = useState({});
     const [seasonId, setSeasonId] = useState(null);
 
     let urlForElements = `http://localhost:8091/${service}`;
-    let urlForAddNewElement = `http://localhost:8091/${service}`;
-    let urlForSearchBySeasonAndInput = `http://localhost:8091/${service}/search/`;
+    let urlForSearchBySeasonAndInput = urlForElements + `/search/`;
 
     useEffect(() => {
         requestGet(urlForElements)
@@ -46,18 +45,22 @@ function ElementsAdmin() {
 
     const dropDownHandler = (event) => {
         event.preventDefault()
-        let getId = Number(event.target.children[event.target.selectedIndex].dataset.id);
 
+        let getId = Number(event.target.children[event.target.selectedIndex].dataset.id);
         setSeasonId(getId);
+
         requestPostSearch(urlForSearchBySeasonAndInput + getId);
     }
 
     const handleSearchFieldChange = (event) => {
         event.preventDefault();
-        let objectFromFieldValue = {"input": event.target.value};
+        let searchFieldValue = {"input": event.target.value};
 
-        seasonId !== null ? requestPostSearch(urlForSearchBySeasonAndInput + seasonId, objectFromFieldValue)
-            : requestPostSearch(urlForSearchBySeasonAndInput, objectFromFieldValue);
+        if (seasonId !== null) {
+            requestPostSearch(urlForSearchBySeasonAndInput + seasonId, searchFieldValue)
+        } else {
+            requestPostSearch(urlForSearchBySeasonAndInput, searchFieldValue)
+        }
     }
 
     const seasonsDropDown =
@@ -74,7 +77,7 @@ function ElementsAdmin() {
                     {inputFieldCreator()}
                 </form>
                 <button className={"inputSubmitButton"}
-                        onClick={() => requestPost(urlForAddNewElement, inputs)}>
+                        onClick={() => requestPost(urlForElements, inputs)}>
                     Hozzáadás
                 </button>
             </div>
