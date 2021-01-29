@@ -31,8 +31,6 @@ function TableCreator(props) {
                             onClick={() => window.location.href = window.location.pathname + `/${element.id}`}>
                             <div className="tableDiv">
 
-                                //TODO convert entities to DTO and don't need these two lines anymore!!!!
-
                                 {typeof element[propertyName] === "object" && element[propertyName] !== null ?
                                     element[propertyName].name : element[propertyName]}
                             </div>

@@ -1,5 +1,5 @@
-html{
-background-color: black;
+html {
+    background-color: black;
 }
 
 .button {
@@ -143,7 +143,8 @@ table td, table th {
     border-radius: 5px;
     padding: 8px;
 }
-.tableDiv{
+
+.tableDiv {
     max-height: 40px;
     overflow: auto;
 }
@@ -167,14 +168,15 @@ table th {
     font-weight: bold;
     text-transform: capitalize;
 }
-.inputContainer{
-    margin:auto;
+
+.inputContainer {
+    margin: auto;
     width: 90%;
     padding-top: 3%;
 
 }
 
-.inputFieldsDiv{
+.inputFieldsDiv {
     display: grid;
     grid-template-columns: auto auto auto auto;
     grid-gap: 5%;
@@ -185,12 +187,13 @@ table th {
 .inputFieldTitle {
     color: #ffc105;
 }
-.inputField{
+
+.inputField {
     background-color: #ffc105;
     text-align: center;
 }
 
-.inputSubmitButton{
+.inputSubmitButton {
     margin-left: 5%;
     margin-bottom: 1%;
     background-color: #ffc105;
@@ -204,7 +207,7 @@ table th {
     min-height: auto;
 }
 
-.videoShadow{
+.videoShadow {
     opacity: 0.4;
 }
 
@@ -230,6 +233,7 @@ table th {
         opacity: 1;
     }
 }
+
 @keyframes roll-in-top {
     0% {
         -webkit-transform: translateY(-800px) rotate(-540deg);
@@ -242,6 +246,7 @@ table th {
         opacity: 1;
     }
 }
+
 @-webkit-keyframes focus-in-expand-fwd {
     0% {
         letter-spacing: -0.5em;
@@ -259,23 +264,11 @@ table th {
         opacity: 1;
     }
 }
-/*@keyframes focus-in-expand-fwd {
-    0% {
-        letter-spacing: -0.5em;
-        -webkit-transform: translateZ(-800px);
-        transform: translateZ(-800px);
-        -webkit-filter: blur(12px);
-        filter: blur(12px);
-        opacity: 0;
-    }
-    100% {
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-        -webkit-filter: blur(0);
-        filter: blur(0);
-        opacity: 1;
-    }
-}*/
+
+.text {
+    color: white;
+}
+
 
 
 

@@ -72,6 +72,7 @@ function ElementsAdmin() {
 
 
 
+
     if (service === "season") {
         return (
             <SeasonAdmin/>
@@ -89,7 +90,7 @@ function ElementsAdmin() {
                     </button>
                 </div>
                 <div>
-                    <label style={{color: "white"}}>Válassz egy szezont: </label>
+                    <label className="text">Válassz egy szezont: </label>
                     <select onChange={dropDownHandler}>{seasonsDropDown}</select>
                 </div>
                 <div>
