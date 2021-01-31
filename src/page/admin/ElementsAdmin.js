@@ -2,20 +2,19 @@ import React, {useContext, useEffect, useState} from "react";
 import AdminNavbar from "../../component/AdminNavbar";
 import TableCreator from "../../component/TableCreator";
 import {useParams} from "react-router";
-import {RequestContext} from "../../context/RequestContext";
+import {UtilContext} from "../../context/UtilContext";
 import {SeasonContext} from "../../context/SeasonContext";
 import SeasonAdmin from "./SeasonAdmin";
 
 function ElementsAdmin() {
 
-    const {requestGet, requestPost, requestPostSearch, elements} = useContext(RequestContext);
+    const {requestGet, requestPost, requestPostSearch, elements, fieldNamesToIgnore} = useContext(UtilContext);
     const {seasons} = useContext(SeasonContext);
     const {service} = useParams();
     const [inputs, setInputs] = useState({});
     const [seasonId, setSeasonId] = useState(null);
-
-    let urlForElements = `http://localhost:8091/${service}`;
-    let urlForSearchBySeasonAndInput = urlForElements + `/search/`;
+    const urlForElements = `http://localhost:8091/${service}`;
+    const urlForSearchBySeasonAndInput = urlForElements + `/search/`;
 
 
     useEffect(() => {
@@ -32,7 +31,8 @@ function ElementsAdmin() {
         if (elements.length > 0) {
 
             return Object.keys(elements[0]).map((fieldName, index) => (
-                fieldName !== "id" ?
+
+                    !fieldNamesToIgnore.includes(fieldName) ?
 
                     <div className="inputFieldPairsDiv" key={index}>
                         <label className="inputFieldTitle">{fieldName}</label>
@@ -69,7 +69,6 @@ function ElementsAdmin() {
         seasons.map((season, index) => (
             <option key={index} data-id={season.id}>{season.name}</option>
         ))
-
 
 
 

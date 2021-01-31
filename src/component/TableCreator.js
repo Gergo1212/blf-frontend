@@ -1,9 +1,9 @@
 import React, {useContext} from "react";
-import {RequestContext} from "../context/RequestContext";
+import {UtilContext} from "../context/UtilContext";
 
 function TableCreator(props) {
 
-    const {sorter} = useContext(RequestContext);
+    const {sorter} = useContext(UtilContext);
 
 
     function getPropertyNames(objectArray) {

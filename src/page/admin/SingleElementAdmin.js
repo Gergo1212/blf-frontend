@@ -1,20 +1,19 @@
 import React, {useContext, useEffect, useState} from "react";
-import {useParams} from "react-router"
 import TableCreator from "../../component/TableCreator";
 import AdminNavbar from "../../component/AdminNavbar";
-import {RequestContext} from "../../context/RequestContext";
+import {UtilContext} from "../../context/UtilContext";
+import {useParams} from "react-router";
 
 function SingleElementAdmin() {
 
-    const {requestPut, requestGet, requestDelete, elements} = useContext(RequestContext)
-    const {service, id} = useParams();
+    const {requestPut, requestGet, requestDelete, elements, fieldNamesToIgnore} = useContext(UtilContext)
     const [inputs, setInputs] = useState({});
-
-    let urlOfElement = `http://localhost:8091/${service}/${id}`;
+    const {service, id} = useParams();
+    const urlForSingleElement = `http://localhost:8091/${service}/${id}`;
 
 
     useEffect(() => {
-        requestGet(urlOfElement);
+        requestGet(urlForSingleElement);
     }, [])
 
     const handleInputFieldChange = (event) => {
@@ -25,7 +24,7 @@ function SingleElementAdmin() {
     const inputFieldCreator =
         Object.keys(elements).map((fieldName, index) => (
 
-                fieldName !== "id" ?
+                !fieldNamesToIgnore.includes(fieldName) ?
                     <div className="inputFieldPairsDiv" key={index}>
                         <label className="inputFieldTitle">{fieldName}</label>
                         <input className="inputField" type="text" name={fieldName}
@@ -35,17 +34,18 @@ function SingleElementAdmin() {
             )
         )
 
+
     return (
 
         <React.Fragment>
             <AdminNavbar/>
             <TableCreator inputObjects={[elements]}/>
-            <button onClick={() => requestDelete(urlOfElement)}>{service} törlése</button>
+            <button onClick={() => requestDelete(urlForSingleElement)}>{service} törlése</button>
             <div className="inputContainer">
                 <form className="inputFieldsDiv">{inputFieldCreator}</form>
             </div>
             <button className="inputSubmitButton"
-                    onClick={() => requestPut(urlOfElement, inputs)}>Módosítás
+                    onClick={() => requestPut(urlForSingleElement, inputs)}>Módosítás
             </button>
         </React.Fragment>
     )
