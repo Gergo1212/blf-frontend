@@ -1,11 +1,12 @@
 import React, {createContext, useState} from "react";
 import axios from "axios";
 
-export const RequestContext = createContext([]);
+export const UtilContext = createContext([]);
 
-function RequestContextProvider(props) {
+function UtilContextProvider(props) {
 
     const [elements, setElements] = useState([]);
+    const fieldNamesToIgnore = ["id", "season", "seasonName"];
 
 
     const requestGet = (url) => {
@@ -58,13 +59,13 @@ function RequestContextProvider(props) {
     }
 
     return (
-        <RequestContext.Provider value={{
+        <UtilContext.Provider value={{
             requestPut, requestGet, requestPost, requestPostSearch, requestDelete, sorter,
-            elements
+            elements, fieldNamesToIgnore
         }}>
             {props.children}
-        </RequestContext.Provider>
+        </UtilContext.Provider>
     )
 }
 
-export default RequestContextProvider;
+export default UtilContextProvider;
