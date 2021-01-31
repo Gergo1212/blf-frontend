@@ -8,9 +8,8 @@ import Main from "./page/Main";
 import Admin from "./page/admin/Admin";
 import SingleElementAdmin from "./page/admin/SingleElementAdmin";
 import ElementsAdmin from "./page/admin/ElementsAdmin";
-import RequestContextProvider from "./context/RequestContext";
 import SeasonContextProvider from "./context/SeasonContext";
-import SeasonAdmin from "./page/admin/SeasonAdmin";
+import UtilContextProvider from "./context/UtilContext";
 
 function App() {
 
@@ -20,15 +19,15 @@ function App() {
                 <Header/>
                 <Navbar/>
                 <Switch>
-                    <SeasonContextProvider>
-                        <RequestContextProvider>
+                    <UtilContextProvider>
+                        <SeasonContextProvider>
                             <Route exact path={"/admin"} component={Admin}/>
                             <Route exact path={"/admin/:service"} component={ElementsAdmin}/>
                             <Route exact path={"/admin/:service/:id"} component={SingleElementAdmin}/>
                             <Route exact path={"/"} component={Main}/>
                             <Route exact path={"/rules"} component={Rules}/>
-                        </RequestContextProvider>
-                    </SeasonContextProvider>
+                        </SeasonContextProvider>
+                    </UtilContextProvider>
                 </Switch>
                 <Footer/>
             </Router>

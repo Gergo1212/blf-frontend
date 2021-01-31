@@ -5,12 +5,13 @@ export const SeasonContext = createContext([]);
 
 function SeasonContextProvider(props) {
 
+    const urlForSeasons = "http://localhost:8091/season"
     const [seasons, setSeasons] = useState([]);
 
 
     useEffect(() => {
         axios
-            .get("http://localhost:8091/season")
+            .get(urlForSeasons)
             .then((response) => setSeasons(response.data))
             .catch((error) => console.log(error))
     }, [])
