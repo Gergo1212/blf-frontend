@@ -3,6 +3,7 @@ import TableCreator from "../../component/TableCreator";
 import AdminNavbar from "../../component/AdminNavbar";
 import {UtilContext} from "../../context/UtilContext";
 import {useParams} from "react-router";
+import TeamAdmin from "./TeamAdmin";
 
 function SingleElementAdmin() {
 
@@ -35,20 +36,26 @@ function SingleElementAdmin() {
         )
 
 
-    return (
+    if (service === "team") {
+        return <TeamAdmin/>
+    } else {
 
-        <React.Fragment>
-            <AdminNavbar/>
-            <TableCreator inputObjects={[elements]}/>
-            <button onClick={() => requestDelete(urlForSingleElement)}>{service} törlése</button>
-            <div className="inputContainer">
-                <form className="inputFieldsDiv">{inputFieldCreator}</form>
-            </div>
-            <button className="inputSubmitButton"
-                    onClick={() => requestPut(urlForSingleElement, inputs)}>Módosítás
-            </button>
-        </React.Fragment>
-    )
+
+        return (
+
+            <React.Fragment>
+                <AdminNavbar/>
+                <TableCreator inputObjects={[elements]}/>
+                <button onClick={() => requestDelete(urlForSingleElement)}>{service} törlése</button>
+                <div className="inputContainer">
+                    <form className="inputFieldsDiv">{inputFieldCreator}</form>
+                </div>
+                <button className="inputSubmitButton"
+                        onClick={() => requestPut(urlForSingleElement, inputs)}>Módosítás
+                </button>
+            </React.Fragment>
+        )
+    }
 }
 
 export default SingleElementAdmin;
