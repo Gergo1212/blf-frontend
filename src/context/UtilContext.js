@@ -6,7 +6,8 @@ export const UtilContext = createContext([]);
 function UtilContextProvider(props) {
 
     const [elements, setElements] = useState([]);
-    const fieldNamesToIgnore = ["id", "season", "seasonName"];
+    const fieldNamesToIgnore = ["id", "season", "seasonName", "league", "homeTeam", "awayTeam", "isBlfTeam"];
+    const dropdownFields = ["league", "homeTeam", "awayTeam", "isBlfTeam"]
 
 
     const requestGet = (url) => {
@@ -61,7 +62,7 @@ function UtilContextProvider(props) {
     return (
         <UtilContext.Provider value={{
             requestPut, requestGet, requestPost, requestPostSearch, requestDelete, sorter,
-            elements, fieldNamesToIgnore
+            elements, fieldNamesToIgnore, dropdownFields
         }}>
             {props.children}
         </UtilContext.Provider>
