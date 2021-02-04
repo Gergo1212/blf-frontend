@@ -11,6 +11,7 @@ import ElementsAdmin from "./page/admin/ElementsAdmin";
 import SeasonContextProvider from "./context/SeasonContext";
 import UtilContextProvider from "./context/UtilContext";
 import ActualLeagueContextProvider from "./context/ActualLeaguesContext";
+import ActualTeamsContextProvider from "./context/ActualTeamsContext";
 
 function App() {
 
@@ -23,11 +24,13 @@ function App() {
                     <UtilContextProvider>
                         <SeasonContextProvider>
                             <ActualLeagueContextProvider>
-                                <Route exact path={"/admin"} component={Admin}/>
-                                <Route exact path={"/admin/:service"} component={ElementsAdmin}/>
-                                <Route exact path={"/admin/:service/:id"} component={SingleElementAdmin}/>
-                                <Route exact path={"/"} component={Main}/>
-                                <Route exact path={"/rules"} component={Rules}/>
+                                <ActualTeamsContextProvider>
+                                    <Route exact path={"/admin"} component={Admin}/>
+                                    <Route exact path={"/admin/:service"} component={ElementsAdmin}/>
+                                    <Route exact path={"/admin/:service/:id"} component={SingleElementAdmin}/>
+                                    <Route exact path={"/"} component={Main}/>
+                                    <Route exact path={"/rules"} component={Rules}/>
+                                </ActualTeamsContextProvider>
                             </ActualLeagueContextProvider>
                         </SeasonContextProvider>
                     </UtilContextProvider>
