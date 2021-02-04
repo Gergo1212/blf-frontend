@@ -7,6 +7,7 @@ import {SeasonContext} from "../../context/SeasonContext";
 import SeasonAdmin from "./SeasonAdmin";
 import ActualLeaguesContext, {ActualLeagueContext} from "../../context/ActualLeaguesContext";
 import {func} from "prop-types";
+import {ActualTeamsContext} from "../../context/ActualTeamsContext";
 
 function ElementsAdmin() {
 
@@ -16,11 +17,27 @@ function ElementsAdmin() {
     } = useContext(UtilContext);
     const {seasons} = useContext(SeasonContext);
     const {actualLeagues} = useContext(ActualLeagueContext);
+    const {actualTeams} = useContext(ActualTeamsContext);
+
     const {service} = useParams();
     const [inputs, setInputs] = useState({});
     const [seasonId, setSeasonId] = useState(null);
+
     const urlForElements = `http://localhost:8091/${service}`;
     const urlForSearchBySeasonAndInput = urlForElements + `/search/`;
+
+    const dropdownValues = {
+        "league": actualLeagues, "awayTeam": actualTeams,
+        "homeTeam": actualTeams, "isBlfTeam": [
+            {
+                "id": 1,
+                "name": "Yes"
+            },
+            {
+                "id": 0,
+                "name": "no"
+            }]
+    }
 
 
     useEffect(() => {
@@ -29,7 +46,14 @@ function ElementsAdmin() {
 
     const handleInputFieldChange = (event) => {
         const value = event.target.value;
-        setInputs({...inputs, [event.target.name]: value});
+        const name = event.target.name;
+
+        if (Object.keys(dropdownValues).includes(name)) {
+            let getId = (event.target.children[event.target.selectedIndex].dataset.id);
+            setInputs({...inputs, [name]: {id: getId}});
+        } else {
+            setInputs({...inputs, [name]: value});
+        }
     }
 
     function inputFieldCreator() {
@@ -52,7 +76,7 @@ function ElementsAdmin() {
         }
     }
 
-    const dropDownHandler = (event) => {
+    const seasonDropdownHandler = (event) => {
         event.preventDefault()
 
         let getId = Number(event.target.children[event.target.selectedIndex].dataset.id);
@@ -88,14 +112,15 @@ function ElementsAdmin() {
                         <label className="text">{fieldName} :</label>
                         <select onChange={handleInputFieldChange} name={fieldName}>
                             <option selected disabled hidden>Válassz</option>
-                            {dropdownCreator(actualLeagues)}
+
+                            {dropdownCreator(dropdownValues[fieldName])}
+
                         </select>
                     </div> : null
             ))
         }
     }
 
-    console.log(inputs)
     if (service === "season") {
         return (
             <SeasonAdmin/>
@@ -114,7 +139,7 @@ function ElementsAdmin() {
                 </div>
                 <div>
                     <label className="text">Válassz egy szezont: </label>
-                    <select onChange={dropDownHandler}>
+                    <select onChange={seasonDropdownHandler}>
                         <option selected disabled hidden>Válassz</option>
                         {dropdownCreator(seasons)}</select>
                 </div>
