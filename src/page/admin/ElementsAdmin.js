@@ -5,11 +5,17 @@ import {useParams} from "react-router";
 import {UtilContext} from "../../context/UtilContext";
 import {SeasonContext} from "../../context/SeasonContext";
 import SeasonAdmin from "./SeasonAdmin";
+import ActualLeaguesContext, {ActualLeagueContext} from "../../context/ActualLeaguesContext";
+import {func} from "prop-types";
 
 function ElementsAdmin() {
 
-    const {requestGet, requestPost, requestPostSearch, elements, fieldNamesToIgnore} = useContext(UtilContext);
+    const {
+        requestGet, requestPost, requestPostSearch, elements,
+        fieldNamesToIgnore, dropdownFields
+    } = useContext(UtilContext);
     const {seasons} = useContext(SeasonContext);
+    const {actualLeagues} = useContext(ActualLeagueContext);
     const {service} = useParams();
     const [inputs, setInputs] = useState({});
     const [seasonId, setSeasonId] = useState(null);
@@ -32,15 +38,16 @@ function ElementsAdmin() {
 
             return Object.keys(elements[0]).map((fieldName, index) => (
 
-                    !fieldNamesToIgnore.includes(fieldName) ?
+                !fieldNamesToIgnore.includes(fieldName) ?
 
                     <div className="inputFieldPairsDiv" key={index}>
                         <label className="inputFieldTitle">{fieldName}</label>
                         <input className="inputField" type="text" name={fieldName}
-                               defaultValue={fieldName}
+                               placeholder={fieldName}
                                onChange={handleInputFieldChange}
                         />
                     </div> : null
+
             ))
         }
     }
@@ -65,13 +72,30 @@ function ElementsAdmin() {
         }
     }
 
-    const seasonsDropDown =
-        seasons.map((season, index) => (
-            <option key={index} data-id={season.id}>{season.name}</option>
+    function dropdownCreator(requiredElements) {
+        return requiredElements.map((element, index) => (
+            <option key={index} data-id={element.id}>{element.name}</option>
         ))
+    }
 
+    function createOptionals() {
 
+        if (elements.length > 0) {
 
+            return Object.keys(elements[0]).map((fieldName, index) => (
+                dropdownFields.includes(fieldName) ?
+                    <div className="inputFieldPairsDiv" key={index}>
+                        <label className="text">{fieldName} :</label>
+                        <select onChange={handleInputFieldChange} name={fieldName}>
+                            <option selected disabled hidden>Válassz</option>
+                            {dropdownCreator(actualLeagues)}
+                        </select>
+                    </div> : null
+            ))
+        }
+    }
+
+    console.log(inputs)
     if (service === "season") {
         return (
             <SeasonAdmin/>
@@ -83,14 +107,16 @@ function ElementsAdmin() {
             <React.Fragment>
                 <AdminNavbar/>
                 <div className="inputContainer">
-                    <form className="inputFieldsDiv">{inputFieldCreator()}</form>
+                    <form className="inputFieldsDiv">{createOptionals()}{inputFieldCreator()}</form>
                     <button className={"inputSubmitButton"}
                             onClick={() => requestPost(urlForElements, inputs)}>Hozzáadás
                     </button>
                 </div>
                 <div>
                     <label className="text">Válassz egy szezont: </label>
-                    <select onChange={dropDownHandler}>{seasonsDropDown}</select>
+                    <select onChange={dropDownHandler}>
+                        <option selected disabled hidden>Válassz</option>
+                        {dropdownCreator(seasons)}</select>
                 </div>
                 <div>
                     <input type="text" onChange={handleSearchFieldChange} placeholder="Keresés"/>

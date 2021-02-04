@@ -23,9 +23,12 @@ function TableCreator(props) {
     }
 
     function createTableFromElements(keyPrefix, elementsArray, propertyNamesArray) {
+
         if (elementsArray.length > 0) {
+
             return elementsArray.map((element, index) => (
                 <tr key={keyPrefix + index} className="rowsToHover">
+
                     {propertyNamesArray.map((propertyName, secondIndex) => (
                         <td key={propertyName + secondIndex}
                             onClick={() => window.location.href = window.location.pathname + `/${element.id}`}>
@@ -36,6 +39,7 @@ function TableCreator(props) {
                             </div>
                         </td>
                     ))}
+
                 </tr>
             ))
         }
