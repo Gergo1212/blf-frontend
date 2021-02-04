@@ -10,6 +10,7 @@ import SingleElementAdmin from "./page/admin/SingleElementAdmin";
 import ElementsAdmin from "./page/admin/ElementsAdmin";
 import SeasonContextProvider from "./context/SeasonContext";
 import UtilContextProvider from "./context/UtilContext";
+import ActualLeagueContextProvider from "./context/ActualLeaguesContext";
 
 function App() {
 
@@ -21,11 +22,13 @@ function App() {
                 <Switch>
                     <UtilContextProvider>
                         <SeasonContextProvider>
-                            <Route exact path={"/admin"} component={Admin}/>
-                            <Route exact path={"/admin/:service"} component={ElementsAdmin}/>
-                            <Route exact path={"/admin/:service/:id"} component={SingleElementAdmin}/>
-                            <Route exact path={"/"} component={Main}/>
-                            <Route exact path={"/rules"} component={Rules}/>
+                            <ActualLeagueContextProvider>
+                                <Route exact path={"/admin"} component={Admin}/>
+                                <Route exact path={"/admin/:service"} component={ElementsAdmin}/>
+                                <Route exact path={"/admin/:service/:id"} component={SingleElementAdmin}/>
+                                <Route exact path={"/"} component={Main}/>
+                                <Route exact path={"/rules"} component={Rules}/>
+                            </ActualLeagueContextProvider>
                         </SeasonContextProvider>
                     </UtilContextProvider>
                 </Switch>
