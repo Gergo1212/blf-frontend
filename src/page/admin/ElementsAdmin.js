@@ -5,8 +5,8 @@ import {useParams} from "react-router";
 import {UtilContext} from "../../context/UtilContext";
 import {SeasonContext} from "../../context/SeasonContext";
 import SeasonAdmin from "./SeasonAdmin";
-import ActualLeaguesContext, {ActualLeagueContext} from "../../context/ActualLeaguesContext";
-import {func} from "prop-types";
+import {ActualLeagueContext} from "../../context/ActualLeaguesContext";
+
 import {ActualTeamsContext} from "../../context/ActualTeamsContext";
 
 function ElementsAdmin() {
