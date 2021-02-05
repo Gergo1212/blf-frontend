@@ -8,6 +8,7 @@ import SeasonAdmin from "./SeasonAdmin";
 import {ActualLeagueContext} from "../../context/ActualLeaguesContext";
 
 import {ActualTeamsContext} from "../../context/ActualTeamsContext";
+import Calendar from "react-calendar";
 
 function ElementsAdmin() {
 
@@ -22,20 +23,34 @@ function ElementsAdmin() {
     const {service} = useParams();
     const [inputs, setInputs] = useState({});
     const [seasonId, setSeasonId] = useState(null);
+    const [eventDate, setEventDate] = useState(new Date());
+    const [birthdate, setBirthdate] = useState(new Date());
+    const [startDate, setStartDate] = useState(new Date());
+
 
     const urlForElements = `http://localhost:8091/${service}`;
     const urlForSearchBySeasonAndInput = urlForElements + `/search/`;
 
     const dropdownValues = {
         "league": actualLeagues, "awayTeam": actualTeams,
-        "homeTeam": actualTeams, "isBlfTeam": [
+        "homeTeam": actualTeams,
+        "isBlfTeam": [
             {
-                "id": 1,
-                "name": "Yes"
+                "name": "Yes",
+                "value": "1"
             },
             {
-                "id": 0,
-                "name": "no"
+                "name": "No",
+                "value": "0"
+            }],
+        "isActive": [
+            {
+                "name": "Yes",
+                "value": "1"
+            },
+            {
+                "name": "No",
+                "value": "0"
             }]
     }
 
@@ -47,8 +62,9 @@ function ElementsAdmin() {
     const handleInputFieldChange = (event) => {
         const value = event.target.value;
         const name = event.target.name;
+        const keys = Object.keys(dropdownValues);
 
-        if (Object.keys(dropdownValues).includes(name)) {
+        if (keys.includes(name) && name !== "isActive" && name !== "isBlfTeam") {
             let getId = (event.target.children[event.target.selectedIndex].dataset.id);
             setInputs({...inputs, [name]: {id: getId}});
         } else {
@@ -56,14 +72,43 @@ function ElementsAdmin() {
         }
     }
 
-    function inputFieldCreator() {
-
+    function calendarCreator() {
         if (elements.length > 0) {
+            let fieldNames = Object.keys(elements[0]);
 
-            return Object.keys(elements[0]).map((fieldName, index) => (
+            return fieldNames.map((fieldName, index) => {
+                    if (fieldName === "eventDate") {
+                        return (
+                            <div className="text"> {fieldName}
+                                <Calendar onChange={setEventDate} value={eventDate}/>
+                            </div>
+                        )
+                    } else if (fieldName === "birthdate") {
+                        return (
+                            <div className="text"> {fieldName}
+                                <Calendar onChange={setBirthdate} value={birthdate}/>
+                            </div>
+                        )
+                    } else if (fieldName === "startDate") {
+                        return (
+                            <div className="text"> {fieldName}
+                                <Calendar onChange={setStartDate} value={startDate}/>
+                            </div>
+                        )
+                    }
+                }
+            )
+        }
+        return null;
+    }
+
+    function inputFieldCreator() {
+        if (elements.length > 0) {
+            let fieldNames = Object.keys(elements[0])
+
+            return fieldNames.map((fieldName, index) => (
 
                 !fieldNamesToIgnore.includes(fieldName) ?
-
                     <div className="inputFieldPairsDiv" key={index}>
                         <label className="inputFieldTitle">{fieldName}</label>
                         <input className="inputField" type="text" name={fieldName}
@@ -73,6 +118,7 @@ function ElementsAdmin() {
                     </div> : null
 
             ))
+
         }
     }
 
@@ -81,7 +127,6 @@ function ElementsAdmin() {
 
         let getId = Number(event.target.children[event.target.selectedIndex].dataset.id);
         setSeasonId(getId);
-
         requestPostSearch(urlForSearchBySeasonAndInput + getId);
     }
 
@@ -97,24 +142,28 @@ function ElementsAdmin() {
     }
 
     function dropdownCreator(requiredElements) {
-        return requiredElements.map((element, index) => (
-            <option key={index} data-id={element.id}>{element.name}</option>
-        ))
+        return (
+            <React.Fragment>
+                <option selected disabled hidden>Válassz</option>
+                {requiredElements.map((element, index) => (
+                    <option key={index} data-id={element.id} value={element.value}>{element.name}</option>
+                ))}
+            </React.Fragment>
+        )
     }
 
-    function createOptionals() {
+    function createOptionalDropdowns() {
 
         if (elements.length > 0) {
+            let fieldNames = Object.keys(elements[0]);
 
-            return Object.keys(elements[0]).map((fieldName, index) => (
+            return fieldNames.map((fieldName, index) => (
+
                 dropdownFields.includes(fieldName) ?
                     <div className="inputFieldPairsDiv" key={index}>
                         <label className="text">{fieldName} :</label>
                         <select onChange={handleInputFieldChange} name={fieldName}>
-                            <option selected disabled hidden>Válassz</option>
-
                             {dropdownCreator(dropdownValues[fieldName])}
-
                         </select>
                     </div> : null
             ))
@@ -132,16 +181,18 @@ function ElementsAdmin() {
             <React.Fragment>
                 <AdminNavbar/>
                 <div className="inputContainer">
-                    <form className="inputFieldsDiv">{createOptionals()}{inputFieldCreator()}</form>
+                    <form className="inputFieldsDiv">
+                        {createOptionalDropdowns()}{calendarCreator()}{inputFieldCreator()}
+                    </form>
                     <button className={"inputSubmitButton"}
                             onClick={() => requestPost(urlForElements, inputs)}>Hozzáadás
                     </button>
                 </div>
                 <div>
-                    <label className="text">Válassz egy szezont: </label>
+                    <label className="text">Keresés szezon szerint:</label>
                     <select onChange={seasonDropdownHandler}>
-                        <option selected disabled hidden>Válassz</option>
-                        {dropdownCreator(seasons)}</select>
+                        {dropdownCreator(seasons)}
+                    </select>
                 </div>
                 <div>
                     <input type="text" onChange={handleSearchFieldChange} placeholder="Keresés"/>

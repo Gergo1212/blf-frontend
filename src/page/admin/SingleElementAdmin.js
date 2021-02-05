@@ -35,11 +35,9 @@ function SingleElementAdmin() {
             )
         )
 
-
     if (service === "team") {
         return <TeamAdmin/>
     } else {
-
 
         return (
 

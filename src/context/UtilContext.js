@@ -6,8 +6,9 @@ export const UtilContext = createContext([]);
 function UtilContextProvider(props) {
 
     const [elements, setElements] = useState([]);
-    const fieldNamesToIgnore = ["id", "season", "seasonName", "league", "homeTeam", "awayTeam", "isBlfTeam", "teamMember"];
-    const dropdownFields = ["league", "homeTeam", "awayTeam", "isBlfTeam"]
+    const fieldNamesToIgnore = ["id", "season", "seasonName", "league", "homeTeam", "awayTeam",
+        "isBlfTeam", "isActive", "teamMember", "eventDate", "birthDate", "startDate"];
+    const dropdownFields = ["league", "homeTeam", "awayTeam", "isBlfTeam", "isActive"]
 
 
     const requestGet = (url) => {
