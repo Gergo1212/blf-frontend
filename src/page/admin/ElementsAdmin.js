@@ -132,15 +132,15 @@ function ElementsAdmin() {
     }
 
     const seasonDropdownHandler = (event) => {
-        event.preventDefault()
 
         let getId = Number(event.target.children[event.target.selectedIndex].dataset.id);
+
         setSeasonId(getId);
         requestPostSearch(urlForSearchBySeasonAndInput + getId);
     }
 
     const handleSearchFieldChange = (event) => {
-        event.preventDefault();
+
         let searchFieldValue = {"input": event.target.value};
 
         if (seasonId !== null) {
