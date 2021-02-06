@@ -77,12 +77,11 @@ function ElementsAdmin() {
         setInputs({...inputs, [fieldName]: event.toDateString()})
     }
 
-
-    function calendarCreator() {
+    const calendarCreator = () => {
         if (elements.length > 0) {
             let fieldNames = Object.keys(elements[0]);
 
-            return fieldNames.map((fieldName, index) => {
+            return (fieldNames.map((fieldName, index) => {
                     if (fieldName === "eventDate") {
                         return (
                             <div className="text"> {fieldName}
@@ -106,9 +105,8 @@ function ElementsAdmin() {
                         )
                     }
                 }
-            )
+            ))
         }
-        return null;
     }
 
     function inputFieldCreator() {
