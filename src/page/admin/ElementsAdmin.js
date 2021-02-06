@@ -72,6 +72,12 @@ function ElementsAdmin() {
         }
     }
 
+    const handleCalendarChange = (event, fieldName, setter) => {
+        setter(event)
+        setInputs({...inputs, [fieldName]: event.toDateString()})
+    }
+
+
     function calendarCreator() {
         if (elements.length > 0) {
             let fieldNames = Object.keys(elements[0]);
@@ -80,19 +86,22 @@ function ElementsAdmin() {
                     if (fieldName === "eventDate") {
                         return (
                             <div className="text"> {fieldName}
-                                <Calendar onChange={setEventDate} value={eventDate}/>
+                                <Calendar onChange={(event) =>
+                                    handleCalendarChange(event, fieldName, setEventDate)} value={eventDate}/>
                             </div>
                         )
                     } else if (fieldName === "birthdate") {
                         return (
                             <div className="text"> {fieldName}
-                                <Calendar onChange={setBirthdate} value={birthdate}/>
+                                <Calendar onChange={(event) =>
+                                    handleCalendarChange(event, fieldName, setBirthdate)} value={birthdate}/>
                             </div>
                         )
                     } else if (fieldName === "startDate") {
                         return (
                             <div className="text"> {fieldName}
-                                <Calendar onChange={setStartDate} value={startDate}/>
+                                <Calendar onChange={(event) =>
+                                    handleCalendarChange(event, fieldName, setStartDate)} value={startDate}/>
                             </div>
                         )
                     }
