@@ -150,7 +150,8 @@ function ElementsAdmin() {
         }
     }
 
-    function dropdownCreator(requiredElements) {
+    const dropdownCreator = (requiredElements) => {
+
         return (
             <React.Fragment>
                 <option selected disabled hidden>Válassz</option>
