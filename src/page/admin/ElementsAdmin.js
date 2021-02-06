@@ -109,7 +109,7 @@ function ElementsAdmin() {
         }
     }
 
-    function inputFieldCreator() {
+    const inputFieldCreator = () => {
         if (elements.length > 0) {
             let fieldNames = Object.keys(elements[0])
 
@@ -160,14 +160,14 @@ function ElementsAdmin() {
         )
     }
 
-    function createOptionalDropdowns() {
+    const createOptionalDropdowns = () => {
 
         if (elements.length > 0) {
             let fieldNames = Object.keys(elements[0]);
 
             return fieldNames.map((fieldName, index) => (
-
                 dropdownFields.includes(fieldName) ?
+
                     <div className="inputFieldPairsDiv" key={index}>
                         <label className="text">{fieldName} :</label>
                         <select onChange={handleInputFieldChange} name={fieldName}>
