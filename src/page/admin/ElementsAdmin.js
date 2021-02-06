@@ -14,7 +14,8 @@ function ElementsAdmin() {
 
     const {
         requestGet, requestPost, requestPostSearch, elements,
-        fieldNamesToIgnore, dropdownFields} = useContext(UtilContext);
+        fieldNamesToIgnore, dropdownFields
+    } = useContext(UtilContext);
     const {seasons} = useContext(SeasonContext);
     const {actualLeagues} = useContext(ActualLeagueContext);
     const {actualTeams} = useContext(ActualTeamsContext);
@@ -177,7 +178,6 @@ function ElementsAdmin() {
         setSeasonId(getId);
         requestPostSearch(urlForSearchBySeasonAndInput + getId);
     }
-
 
 
     if (service === "season") {

@@ -22,8 +22,9 @@ function SingleElementAdmin() {
         setInputs({...inputs, [event.target.name]: value});
     }
 
-    const inputFieldCreator =
-        Object.keys(elements).map((fieldName, index) => (
+    const inputFieldCreator = () => {
+
+        return Object.keys(elements).map((fieldName, index) => (
 
                 !fieldNamesToIgnore.includes(fieldName) ?
                     <div className="inputFieldPairsDiv" key={index}>
@@ -34,6 +35,7 @@ function SingleElementAdmin() {
                     </div> : null
             )
         )
+    }
 
     if (service === "team") {
         return <TeamAdmin/>
@@ -46,7 +48,7 @@ function SingleElementAdmin() {
                 <TableCreator inputObjects={[elements]}/>
                 <button onClick={() => requestDelete(urlForSingleElement)}>{service} törlése</button>
                 <div className="inputContainer">
-                    <form className="inputFieldsDiv">{inputFieldCreator}</form>
+                    <form className="inputFieldsDiv">{inputFieldCreator()}</form>
                 </div>
                 <button className="inputSubmitButton"
                         onClick={() => requestPut(urlForSingleElement, inputs)}>Módosítás
