@@ -14,8 +14,7 @@ function ElementsAdmin() {
 
     const {
         requestGet, requestPost, requestPostSearch, elements,
-        fieldNamesToIgnore, dropdownFields
-    } = useContext(UtilContext);
+        fieldNamesToIgnore, dropdownFields} = useContext(UtilContext);
     const {seasons} = useContext(SeasonContext);
     const {actualLeagues} = useContext(ActualLeagueContext);
     const {actualTeams} = useContext(ActualTeamsContext);
@@ -59,23 +58,6 @@ function ElementsAdmin() {
         requestGet(urlForElements)
     }, [])
 
-    const handleInputFieldChange = (event) => {
-        const value = event.target.value;
-        const name = event.target.name;
-        const keys = Object.keys(dropdownValues);
-
-        if (keys.includes(name) && name !== "isActive" && name !== "isBlfTeam") {
-            let getId = (event.target.children[event.target.selectedIndex].dataset.id);
-            setInputs({...inputs, [name]: {id: getId}});
-        } else {
-            setInputs({...inputs, [name]: value});
-        }
-    }
-
-    const handleCalendarChange = (event, fieldName, setter) => {
-        setter(event)
-        setInputs({...inputs, [fieldName]: event.toDateString()})
-    }
 
     const calendarCreator = () => {
         if (elements.length > 0) {
@@ -109,6 +91,11 @@ function ElementsAdmin() {
         }
     }
 
+    const handleCalendarChange = (event, fieldName, setter) => {
+        setter(event)
+        setInputs({...inputs, [fieldName]: event.toDateString()})
+    }
+
     const inputFieldCreator = () => {
         if (elements.length > 0) {
             let fieldNames = Object.keys(elements[0])
@@ -129,12 +116,17 @@ function ElementsAdmin() {
         }
     }
 
-    const seasonDropdownHandler = (event) => {
+    const handleInputFieldChange = (event) => {
+        const value = event.target.value;
+        const name = event.target.name;
+        const keys = Object.keys(dropdownValues);
 
-        let getId = Number(event.target.children[event.target.selectedIndex].dataset.id);
-
-        setSeasonId(getId);
-        requestPostSearch(urlForSearchBySeasonAndInput + getId);
+        if (keys.includes(name) && name !== "isActive" && name !== "isBlfTeam") {
+            let getId = (event.target.children[event.target.selectedIndex].dataset.id);
+            setInputs({...inputs, [name]: {id: getId}});
+        } else {
+            setInputs({...inputs, [name]: value});
+        }
     }
 
     const handleSearchFieldChange = (event) => {
@@ -160,7 +152,7 @@ function ElementsAdmin() {
         )
     }
 
-    const createOptionalDropdowns = () => {
+    const optionalDropdownCreator = () => {
 
         if (elements.length > 0) {
             let fieldNames = Object.keys(elements[0]);
@@ -178,6 +170,16 @@ function ElementsAdmin() {
         }
     }
 
+    const seasonDropdownHandler = (event) => {
+
+        let getId = Number(event.target.children[event.target.selectedIndex].dataset.id);
+
+        setSeasonId(getId);
+        requestPostSearch(urlForSearchBySeasonAndInput + getId);
+    }
+
+
+
     if (service === "season") {
         return (
             <SeasonAdmin/>
@@ -190,7 +192,7 @@ function ElementsAdmin() {
                 <AdminNavbar/>
                 <div className="inputContainer">
                     <form className="inputFieldsDiv">
-                        {createOptionalDropdowns()}{calendarCreator()}{inputFieldCreator()}
+                        {optionalDropdownCreator()}{calendarCreator()}{inputFieldCreator()}
                     </form>
                     <button className={"inputSubmitButton"}
                             onClick={() => requestPost(urlForElements, inputs)}>Hozzáadás
