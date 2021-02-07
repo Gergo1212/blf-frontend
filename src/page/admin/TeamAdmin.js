@@ -8,12 +8,16 @@ import axios from "axios";
 
 function TeamAdmin() {
 
-    const {requestGet, elements} = useContext(UtilContext);
+    const {requestGet, requestGetForPlayers, elements, fieldNamesToIgnore} = useContext(UtilContext);
     const {id} = useParams();
-    const [date, setDate] = useState(new Date());
+    const [players, setPlayers] = useState([]);
+    const [inputs, setInputs] = useState({});
+    const urlForTeam = `http://localhost:8091/team/${id}`;
+    const urlForPlayers = "http://localhost:8091/player";
 
     useEffect(() => {
-        requestGet(`http://localhost:8091/team/${id}`)
+        requestGet(urlForTeam)
+        getPlayers()
     }, []);
 
     const listTeamMembers = (team) => {

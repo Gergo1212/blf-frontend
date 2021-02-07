@@ -6,7 +6,6 @@ import {UtilContext} from "../../context/UtilContext";
 import {SeasonContext} from "../../context/SeasonContext";
 import SeasonAdmin from "./SeasonAdmin";
 import {ActualLeagueContext} from "../../context/ActualLeaguesContext";
-
 import {ActualTeamsContext} from "../../context/ActualTeamsContext";
 import Calendar from "react-calendar";
 
