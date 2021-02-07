@@ -19,6 +19,14 @@ function UtilContextProvider(props) {
             .catch((error) => console.log(error))
     }
 
+    const requestGetForPlayers = (url, callBackUrl) => {
+        axios
+            .get(url)
+            .then(() => requestGet(callBackUrl))
+            .catch((error) => console.log(error))
+
+    }
+
     const requestPut = (url, data) => {
         axios
             .put(url, data)
@@ -63,8 +71,8 @@ function UtilContextProvider(props) {
 
     return (
         <UtilContext.Provider value={{
-            requestPut, requestGet, requestPost, requestPostSearch, requestDelete, sorter,
-            elements, fieldNamesToIgnore, dropdownFields
+            requestPut, requestGet, requestPost, requestPostSearch, requestDelete,
+            requestGetForPlayers, sorter, elements, fieldNamesToIgnore, dropdownFields
         }}>
             {props.children}
         </UtilContext.Provider>
