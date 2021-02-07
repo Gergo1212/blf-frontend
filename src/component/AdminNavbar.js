@@ -37,16 +37,18 @@ function AdminNavbar() {
         },
     ]
 
-    const listAdminMenuButtons =
-        buttons.map((button, index) => (
+    const listAdminMenuButtons = () => {
+
+        return buttons.map((button, index) => (
             <a key={index} href={button.link}>
                 <button key={index} className={"button roll-in-top"}>{button.name}</button>
             </a>
         ))
+    }
 
     return (
         <div className={"navbarDiv"}>
-            {listAdminMenuButtons}
+            {listAdminMenuButtons()}
         </div>
     )
 }

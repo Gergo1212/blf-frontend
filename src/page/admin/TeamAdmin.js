@@ -16,15 +16,13 @@ function TeamAdmin() {
         requestGet(`http://localhost:8091/team/${id}`)
     }, []);
 
-    function listTeamMembers(team) {
+    const listTeamMembers = (team) => {
         if (team.teamMember !== undefined) {
             return elements.teamMember.map((member) => (
                 member.Aktív === 1 ?
-                <li>{member.id} | {member.name}</li>
-                    : <li style={{color:"red"}}>{member.id} | {member.name}</li>
+                    <li>{member.id} | {member.name}</li>
+                    : <li style={{color: "red"}}>{member.id} | {member.name}</li>
             ))
-        } else {
-            return null;
         }
     }
 

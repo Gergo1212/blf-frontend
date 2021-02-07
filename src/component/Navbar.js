@@ -126,25 +126,27 @@ function Navbar() {
 
     const categories = [introduction, general, contact, program, results, teams, links];
 
-    const buttonCreator =
-        navbarButtonNames.map((buttonName, index) => (
+    const buttonCreator = () => {
+
+        return navbarButtonNames.map((buttonName, index) => (
             <div key={index} className={"dropDown"}>
                 <button key={index} className={"button dropBtn roll-in-top"}>{buttonName}
                     <i key={index} className={"fas fa-caret-down"}/>
                 </button>
                 <div className={"dropDownContent roll-in-top"}>
                     {categories[index].map((element, secondIndex) => (
-                        <a key={secondIndex+"a"} href={element.link} target="_blank"
+                        <a key={secondIndex + "a"} href={element.link} target="_blank"
                            rel="noopener noreferrer">{element.name}</a>
                     ))}
                 </div>
             </div>
         ))
+    }
 
 
     return (
         <div className={"navbarDiv"}>
-            {buttonCreator}
+            {buttonCreator()}
             <button className={"button roll-in-top"}>Statisztika</button>
             <button className={"button roll-in-top"}>Edzések</button>
             <button className={"button roll-in-top"}>Játékosok</button>

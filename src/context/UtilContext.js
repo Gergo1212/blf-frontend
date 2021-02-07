@@ -1,5 +1,6 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, useCallback, useState} from "react";
 import axios from "axios";
+import * as url from "url";
 
 export const UtilContext = createContext([]);
 
@@ -7,7 +8,7 @@ function UtilContextProvider(props) {
 
     const [elements, setElements] = useState([]);
     const fieldNamesToIgnore = ["id", "season", "seasonName", "league", "homeTeam", "awayTeam",
-        "isBlfTeam", "isActive", "teamMember", "eventDate", "birthDate", "startDate"];
+        "isBlfTeam", "isActive", "teamMember", "eventDate", "birthdate", "startDate", "age"];
     const dropdownFields = ["league", "homeTeam", "awayTeam", "isBlfTeam", "isActive"]
 
 

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useMemo, useState} from "react";
 import AdminNavbar from "../../component/AdminNavbar";
 import TableCreator from "../../component/TableCreator";
 import {useParams} from "react-router";
@@ -26,7 +26,6 @@ function ElementsAdmin() {
     const [eventDate, setEventDate] = useState(new Date());
     const [birthdate, setBirthdate] = useState(new Date());
     const [startDate, setStartDate] = useState(new Date());
-
 
     const urlForElements = `http://localhost:8091/${service}`;
     const urlForSearchBySeasonAndInput = urlForElements + `/search/`;
@@ -94,7 +93,14 @@ function ElementsAdmin() {
 
     const handleCalendarChange = (event, fieldName, setter) => {
         setter(event)
-        setInputs({...inputs, [fieldName]: event.toDateString()})
+        const correctDateFormat = new Date(event.getTime() +
+            Math.abs(event.getTimezoneOffset() * 60000)).toJSON().slice(0, 10);
+
+        if (fieldName === "startDate") {
+            setInputs({...inputs, [fieldName]: event.getFullYear().toString()})
+        } else {
+            setInputs({...inputs, [fieldName]: correctDateFormat})
+        }
     }
 
     const inputFieldCreator = () => {
@@ -178,7 +184,6 @@ function ElementsAdmin() {
         setSeasonId(getId);
         requestPostSearch(urlForSearchBySeasonAndInput + getId);
     }
-
 
     if (service === "season") {
         return (
