@@ -63,6 +63,10 @@ function TeamAdmin() {
         requestGetForPlayers(urlForTeamMember, urlForTeam);
     }
 
+    const playerDeleter = () => {
+        console.log("AAAAA")
+    }
+
     const inputFieldCreator = () => {
 
         return Object.keys(elements).map((fieldName, index) => (
