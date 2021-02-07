@@ -24,8 +24,12 @@ function TeamAdmin() {
         if (team.teamMember !== undefined) {
             return elements.teamMember.map((member) => (
                 member.isActive === 1 ?
-                    <li>{member.id} | {member.name}</li>
-                    : <li style={{color: "red"}}>{member.id} | {member.name}</li>
+                    <li>
+                        {member.id} | {member.name} <i onClick={playerDeleter} className="far fa-trash-alt delete"/>
+                    </li>
+                    : <li style={{color: "red"}}>
+                        {member.id} | {member.name} <i onClick={playerDeleter} className="far fa-trash-alt delete"/>
+                    </li>
             ))
         }
     }

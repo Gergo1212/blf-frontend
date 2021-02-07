@@ -269,6 +269,11 @@ table th {
     color: white;
 }
 
+.delete{
+    cursor: pointer;
+}
+
+
 
 
 
