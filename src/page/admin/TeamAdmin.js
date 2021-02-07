@@ -5,10 +5,14 @@ import AdminNavbar from "../../component/AdminNavbar";
 import TableCreator from "../../component/TableCreator";
 import 'react-calendar/dist/Calendar.css';
 import axios from "axios";
+import * as url from "url";
 
 function TeamAdmin() {
 
-    const {requestGet, requestGetForPlayers, elements, fieldNamesToIgnore} = useContext(UtilContext);
+    const {
+        requestGet, requestGetForPlayers, requestDeleteForTeamMember, elements,
+        fieldNamesToIgnore
+    } = useContext(UtilContext);
     const {id} = useParams();
     const [players, setPlayers] = useState([]);
     const [inputs, setInputs] = useState({});
@@ -24,11 +28,13 @@ function TeamAdmin() {
         if (team.teamMember !== undefined) {
             return elements.teamMember.map((member) => (
                 member.isActive === 1 ?
-                    <li>
-                        {member.id} | {member.name} <i onClick={playerDeleter} className="far fa-trash-alt delete"/>
+                    <li value={member.id}>
+                        {member.id} | {member.name} <i onClick={event => playerDeleter(event)}
+                                                       className="far fa-trash-alt delete"/>
                     </li>
-                    : <li style={{color: "red"}}>
-                        {member.id} | {member.name} <i onClick={playerDeleter} className="far fa-trash-alt delete"/>
+                    : <li value={member.id} style={{color: "red"}}>
+                        {member.id} | {member.name} <i onClick={event => playerDeleter(event)}
+                                                       className="far fa-trash-alt delete"/>
                     </li>
             ))
         }
@@ -58,13 +64,15 @@ function TeamAdmin() {
 
     const playerSender = (event) => {
         let playerId = event.target.value;
-        let urlForTeamMember = `http://localhost:8091/teammember/add/${id}/${playerId}`
+        let urlForTeamMember = `http://localhost:8091/teamMember/add/${id}/${playerId}`
 
         requestGetForPlayers(urlForTeamMember, urlForTeam);
     }
 
-    const playerDeleter = () => {
-        console.log("AAAAA")
+    const playerDeleter = (event) => {
+        let playerId = event.target.parentElement.value;
+        let urlForDelete = `http://localhost:8091/teamMember/delete/${playerId}/${id}`
+        requestDeleteForTeamMember(urlForDelete, urlForTeam)
     }
 
     const inputFieldCreator = () => {
