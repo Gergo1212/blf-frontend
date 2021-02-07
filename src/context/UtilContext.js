@@ -1,6 +1,7 @@
 import React, {createContext, useCallback, useState} from "react";
 import axios from "axios";
 import * as url from "url";
+import {errorMonitor} from "events";
 
 export const UtilContext = createContext([]);
 
@@ -55,6 +56,13 @@ function UtilContextProvider(props) {
             .catch((error) => console.log(error))
     }
 
+    const requestDeleteForTeamMember = (url, callBackUrl) => {
+        axios
+            .delete(url)
+            .then(() => requestGet(callBackUrl))
+            .catch((error) => console.log(error))
+    }
+
     const sorter = (event) => {
 
         let parentValue = event.currentTarget.parentNode.textContent.toString();
@@ -72,7 +80,7 @@ function UtilContextProvider(props) {
     return (
         <UtilContext.Provider value={{
             requestPut, requestGet, requestPost, requestPostSearch, requestDelete,
-            requestGetForPlayers, sorter, elements, fieldNamesToIgnore, dropdownFields
+            requestGetForPlayers, requestDeleteForTeamMember, sorter, elements, fieldNamesToIgnore, dropdownFields
         }}>
             {props.children}
         </UtilContext.Provider>
